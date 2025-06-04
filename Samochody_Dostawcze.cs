@@ -31,6 +31,25 @@ namespace Komis_Samochodowy_App
         {
             var lista = komis_dostawcze.Lista_Wszystkich_Samochodow_Dostawczych();
             data_samochody_dostawcze.DataSource = lista.ToList();
+
+            data_samochody_dostawcze.Columns["Marka"].DisplayIndex = 0;
+            data_samochody_dostawcze.Columns["Model"].DisplayIndex = 1;
+            data_samochody_dostawcze.Columns["Rok_Produkcji"].DisplayIndex = 2;
+            data_samochody_dostawcze.Columns["Cena"].DisplayIndex = 3;
+            data_samochody_dostawcze.Columns["Rodzaj_Zabudowy"].DisplayIndex = 4;
+            data_samochody_dostawcze.Columns["Przebieg"].DisplayIndex = 5;
+            data_samochody_dostawcze.Columns["Vin"].DisplayIndex = 6;
+            data_samochody_dostawcze.Columns["Ladownosc"].DisplayIndex = 7;
+            data_samochody_dostawcze.Columns["Liczba_Drzwi_Bocznych"].DisplayIndex = 8;
+            data_samochody_dostawcze.Columns["Pojemnosc_Silnika"].DisplayIndex = 9;
+            data_samochody_dostawcze.Columns["Moc"].DisplayIndex = 10;
+            data_samochody_dostawcze.Columns["Rodzaj_Paliwa"].DisplayIndex = 11;
+            data_samochody_dostawcze.Columns["Rodzaj_Napedu"].DisplayIndex = 12;
+            data_samochody_dostawcze.Columns["Skrzynia_Biegow"].DisplayIndex = 13;
+            data_samochody_dostawcze.Columns["Kraj_Pochodzenia"].DisplayIndex = 14;
+            data_samochody_dostawcze.Columns["Nieuszkodzony"].DisplayIndex = 15;
+            data_samochody_dostawcze.Columns["Sprzedany"].DisplayIndex = 16;
+            data_samochody_dostawcze.Columns["Wlasciciel"].DisplayIndex = 17;
         }
     }
 }

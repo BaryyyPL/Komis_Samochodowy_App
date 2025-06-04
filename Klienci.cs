@@ -31,6 +31,12 @@ namespace Komis_Samochodowy_App
         {
             var lista = komis_klienci.Lista_Wszystkich_Klientow();
             data_klienci.DataSource = lista.ToList();
+
+            data_klienci.Columns["Nazwisko"].DisplayIndex = 0;
+            data_klienci.Columns["Imie"].DisplayIndex = 1;
+            data_klienci.Columns["Numer_Telefonu"].DisplayIndex = 2;
+            data_klienci.Columns["Email"].DisplayIndex = 3;
+            data_klienci.Columns["Newsletter"].DisplayIndex = 4;
         }
     }
 }

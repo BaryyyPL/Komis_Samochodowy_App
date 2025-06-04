@@ -31,6 +31,13 @@ namespace Komis_Samochodowy_App
         {
             var lista = komis_pracownicy.Lista_Wszystkich_Pracownikow();
             data_pracownicy.DataSource = lista.ToList();
+
+            data_pracownicy.Columns["Nazwisko"].DisplayIndex = 0;
+            data_pracownicy.Columns["Imie"].DisplayIndex = 1;
+            data_pracownicy.Columns["Numer_Telefonu"].DisplayIndex = 2;
+            data_pracownicy.Columns["Email"].DisplayIndex = 3;
+            data_pracownicy.Columns["Stanowisko"].DisplayIndex = 4;
+            data_pracownicy.Columns["Pensja"].DisplayIndex = 5;
         }
     }
 }
