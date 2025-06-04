@@ -14,24 +14,33 @@ namespace Komis_Samochodowy_App
         private void btn_samochody_osobowe_Click(object sender, EventArgs e)
         {
             this.Hide();
-            var formKlienci = new Samochody_Osobowe();
-            formKlienci.FormClosed += (s, args) => this.Show(); // Pokazuje Form1 po zamkniêciu
-            formKlienci.Show();
+            var samochody_osobowe_form= new Samochody_Osobowe();
+            samochody_osobowe_form.FormClosed += (s, args) => this.Show();
+            samochody_osobowe_form.Show();
         }
 
         private void btn_pracownicy_Click(object sender, EventArgs e)
         {
-
+            this.Hide();
+            var pracownicy_form = new Pracownicy();
+            pracownicy_form.FormClosed += (s, args) => this.Show();
+            pracownicy_form.Show();
         }
 
         private void btn_samochody_dostawcze_Click(object sender, EventArgs e)
         {
-
+            this.Hide();
+            var samochody_dostawcze_form = new Samochody_Dostawcze();
+            samochody_dostawcze_form.FormClosed += (s, args) => this.Show();
+            samochody_dostawcze_form.Show();
         }
 
         private void btn_klienci_Click(object sender, EventArgs e)
         {
-
+            this.Hide();
+            var klienci_form = new Klienci();
+            klienci_form.FormClosed += (s, args) => this.Show();
+            klienci_form.Show();
         }
     }
 }

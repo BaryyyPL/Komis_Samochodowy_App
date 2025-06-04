@@ -140,6 +140,7 @@
             Controls.Add(label2);
             Controls.Add(label1);
             Name = "Form1";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Komis Samochodowy";
             flowLayoutPanel1.ResumeLayout(false);
             ResumeLayout(false);

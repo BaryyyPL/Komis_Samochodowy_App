@@ -1,6 +1,6 @@
 ﻿namespace Komis_Samochodowy_App
 {
-    partial class Samochody_Osobowe
+    partial class Samochody_Dostawcze
     {
         /// <summary>
         /// Required designer variable.
@@ -28,9 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
-            label1 = new Label();
             btn_cofnij = new Button();
+            label1 = new Label();
             SuspendLayout();
+            // 
+            // btn_cofnij
+            // 
+            btn_cofnij.Dock = DockStyle.Bottom;
+            btn_cofnij.Location = new Point(0, 624);
+            btn_cofnij.Name = "btn_cofnij";
+            btn_cofnij.Size = new Size(982, 29);
+            btn_cofnij.TabIndex = 4;
+            btn_cofnij.Text = "Cofnij";
+            btn_cofnij.UseVisualStyleBackColor = true;
+            btn_cofnij.Click += btn_cofnij_Click;
             // 
             // label1
             // 
@@ -39,39 +50,28 @@
             label1.Font = new Font("Segoe UI", 31.8000011F, FontStyle.Bold, GraphicsUnit.Point);
             label1.Location = new Point(0, 0);
             label1.Name = "label1";
-            label1.Size = new Size(576, 72);
-            label1.TabIndex = 1;
-            label1.Text = "Samochody Osobowe";
+            label1.Size = new Size(611, 72);
+            label1.TabIndex = 3;
+            label1.Text = "Samochody Dostawcze";
             label1.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // btn_cofnij
-            // 
-            btn_cofnij.Dock = DockStyle.Bottom;
-            btn_cofnij.Location = new Point(0, 624);
-            btn_cofnij.Name = "btn_cofnij";
-            btn_cofnij.Size = new Size(982, 29);
-            btn_cofnij.TabIndex = 2;
-            btn_cofnij.Text = "Cofnij";
-            btn_cofnij.UseVisualStyleBackColor = true;
-            btn_cofnij.Click += btn_cofnij_Click;
-            // 
-            // Samochody_Osobowe
+            // Samochody_Dostawcze
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(982, 653);
             Controls.Add(btn_cofnij);
             Controls.Add(label1);
-            Name = "Samochody_Osobowe";
+            Name = "Samochody_Dostawcze";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Samochody Osobowe";
+            Text = "Samochody Dostawcze";
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
-        private Label label1;
         private Button btn_cofnij;
+        private Label label1;
     }
 }
