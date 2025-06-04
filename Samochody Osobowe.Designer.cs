@@ -30,6 +30,11 @@
         {
             label1 = new Label();
             btn_cofnij = new Button();
+            panel1 = new Panel();
+            data_samochody_osobowe = new DataGridView();
+            btn_wyswietl_liste = new Button();
+            panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)data_samochody_osobowe).BeginInit();
             SuspendLayout();
             // 
             // label1
@@ -55,16 +60,59 @@
             btn_cofnij.UseVisualStyleBackColor = true;
             btn_cofnij.Click += btn_cofnij_Click;
             // 
+            // panel1
+            // 
+            panel1.Controls.Add(data_samochody_osobowe);
+            panel1.Controls.Add(btn_wyswietl_liste);
+            panel1.Dock = DockStyle.Fill;
+            panel1.Location = new Point(0, 72);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(982, 552);
+            panel1.TabIndex = 3;
+            // 
+            // data_samochody_osobowe
+            // 
+            data_samochody_osobowe.AllowUserToAddRows = false;
+            data_samochody_osobowe.AllowUserToDeleteRows = false;
+            data_samochody_osobowe.AllowUserToResizeColumns = false;
+            data_samochody_osobowe.AllowUserToResizeRows = false;
+            data_samochody_osobowe.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            data_samochody_osobowe.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            data_samochody_osobowe.BackgroundColor = SystemColors.Control;
+            data_samochody_osobowe.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            data_samochody_osobowe.Dock = DockStyle.Top;
+            data_samochody_osobowe.Location = new Point(0, 0);
+            data_samochody_osobowe.Name = "data_samochody_osobowe";
+            data_samochody_osobowe.ReadOnly = true;
+            data_samochody_osobowe.RowHeadersWidth = 51;
+            data_samochody_osobowe.RowTemplate.Height = 29;
+            data_samochody_osobowe.Size = new Size(982, 190);
+            data_samochody_osobowe.TabIndex = 2;
+            // 
+            // btn_wyswietl_liste
+            // 
+            btn_wyswietl_liste.Dock = DockStyle.Bottom;
+            btn_wyswietl_liste.Location = new Point(0, 523);
+            btn_wyswietl_liste.Name = "btn_wyswietl_liste";
+            btn_wyswietl_liste.Size = new Size(982, 29);
+            btn_wyswietl_liste.TabIndex = 3;
+            btn_wyswietl_liste.Text = "Wyświetl Listę";
+            btn_wyswietl_liste.UseVisualStyleBackColor = true;
+            btn_wyswietl_liste.Click += btn_wyswietl_liste_Click;
+            // 
             // Samochody_Osobowe
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(982, 653);
+            Controls.Add(panel1);
             Controls.Add(btn_cofnij);
             Controls.Add(label1);
             Name = "Samochody_Osobowe";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Samochody Osobowe";
+            panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)data_samochody_osobowe).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -73,5 +121,8 @@
 
         private Label label1;
         private Button btn_cofnij;
+        private Panel panel1;
+        private DataGridView data_samochody_osobowe;
+        private Button btn_wyswietl_liste;
     }
 }
