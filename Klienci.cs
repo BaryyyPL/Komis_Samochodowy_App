@@ -29,7 +29,47 @@ namespace Komis_Samochodowy_App
 
         private void btn_wyswietl_liste_Click(object sender, EventArgs e)
         {
+
+            if (tb_filtruj_nazwisko.Text.Length > 0)
+            {
+                komis_klienci.Filtruj_Nazwisko(tb_filtruj_nazwisko.Text);
+            }
+            if (tb_filtruj_imie.Text.Length > 0)
+            {
+                komis_klienci.Filtruj_Imie(tb_filtruj_imie.Text);
+            }
+            if (tb_filtruj_numer_telefonu.Text.Length > 0)
+            {
+                komis_klienci.Filtruj_Numer_Telefonu(tb_filtruj_numer_telefonu.Text);
+            }
+            if (tb_filtruj_email.Text.Length > 0)
+            {
+                komis_klienci.Filtruj_Email(tb_filtruj_email.Text);
+            }
+            if (cb_filtruj_newsletter.Checked == true)
+            {
+                komis_klienci.Filtruj_Newsletter();
+            }
+
+            if (rb_nazwisko_rosnaco.Checked)
+            {
+                komis_klienci.Sortuj_Nazwisko_Rosnaco();
+            }
+            else if (rb_nazwisko_malejaco.Checked)
+            {
+                komis_klienci.Sortuj_Nazwisko_Malejaco();
+            }
+            else if (rb_imie_rosnaco.Checked)
+            {
+                komis_klienci.Sortuj_Imie_Rosnaco();
+            }
+            else
+            {
+                komis_klienci.Sortuj_Imie_Malejaco();
+            }
+
             var lista = komis_klienci.Lista_Wszystkich_Klientow();
+
             data_klienci.DataSource = lista.ToList();
 
             data_klienci.Columns["Nazwisko"].DisplayIndex = 0;
@@ -71,6 +111,18 @@ namespace Komis_Samochodowy_App
             {
                 MessageBox.Show("Niepowodzenie", "Niepowodzenia");
             }
+        }
+
+        private void btn_resetuj_filtry_Click(object sender, EventArgs e)
+        {
+            komis_klienci.Resetuj_Filtry();
+            tb_filtruj_nazwisko.Clear();
+            tb_filtruj_imie.Clear();
+            tb_filtruj_numer_telefonu.Clear();
+            tb_filtruj_email.Clear();
+            cb_filtruj_newsletter.Checked = false;
+
+            btn_wyswietl_liste_Click(sender, e);
         }
     }
 }
