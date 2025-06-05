@@ -32,6 +32,7 @@
             label1 = new Label();
             panel1 = new Panel();
             groupBox4 = new GroupBox();
+            button1 = new Button();
             btn_resetuj_filtry = new Button();
             cb_filtruj_newsletter = new CheckBox();
             tb_filtruj_email = new TextBox();
@@ -55,7 +56,6 @@
             tb_email = new TextBox();
             tb_imie = new TextBox();
             data_klienci = new DataGridView();
-            btn_wyswietl_liste = new Button();
             panel1.SuspendLayout();
             groupBox4.SuspendLayout();
             groupBox3.SuspendLayout();
@@ -94,7 +94,6 @@
             panel1.Controls.Add(groupBox2);
             panel1.Controls.Add(groupBox1);
             panel1.Controls.Add(data_klienci);
-            panel1.Controls.Add(btn_wyswietl_liste);
             panel1.Dock = DockStyle.Fill;
             panel1.Location = new Point(0, 72);
             panel1.Name = "panel1";
@@ -103,6 +102,7 @@
             // 
             // groupBox4
             // 
+            groupBox4.Controls.Add(button1);
             groupBox4.Controls.Add(btn_resetuj_filtry);
             groupBox4.Controls.Add(cb_filtruj_newsletter);
             groupBox4.Controls.Add(tb_filtruj_email);
@@ -111,19 +111,30 @@
             groupBox4.Controls.Add(tb_filtruj_nazwisko);
             groupBox4.Location = new Point(0, 343);
             groupBox4.Name = "groupBox4";
-            groupBox4.Size = new Size(982, 174);
+            groupBox4.Size = new Size(982, 209);
             groupBox4.TabIndex = 7;
             groupBox4.TabStop = false;
             groupBox4.Text = "Filtracja";
+            // 
+            // button1
+            // 
+            button1.AutoSize = true;
+            button1.Location = new Point(748, 176);
+            button1.Name = "button1";
+            button1.Size = new Size(108, 30);
+            button1.TabIndex = 9;
+            button1.Text = "Zastosuj filtry";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += btn_wyswietl_liste_Click;
             // 
             // btn_resetuj_filtry
             // 
             btn_resetuj_filtry.AutoSize = true;
             btn_resetuj_filtry.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            btn_resetuj_filtry.Dock = DockStyle.Right;
-            btn_resetuj_filtry.Location = new Point(878, 131);
+            btn_resetuj_filtry.Location = new Point(873, 176);
+            btn_resetuj_filtry.Margin = new Padding(5);
             btn_resetuj_filtry.Name = "btn_resetuj_filtry";
-            btn_resetuj_filtry.Size = new Size(101, 40);
+            btn_resetuj_filtry.Size = new Size(101, 30);
             btn_resetuj_filtry.TabIndex = 8;
             btn_resetuj_filtry.Text = "Resetuj filtry";
             btn_resetuj_filtry.UseVisualStyleBackColor = true;
@@ -132,48 +143,48 @@
             // cb_filtruj_newsletter
             // 
             cb_filtruj_newsletter.AutoSize = true;
-            cb_filtruj_newsletter.Dock = DockStyle.Left;
-            cb_filtruj_newsletter.Location = new Point(3, 131);
+            cb_filtruj_newsletter.Location = new Point(5, 176);
+            cb_filtruj_newsletter.Margin = new Padding(5);
             cb_filtruj_newsletter.Name = "cb_filtruj_newsletter";
-            cb_filtruj_newsletter.Size = new Size(301, 40);
+            cb_filtruj_newsletter.Size = new Size(301, 24);
             cb_filtruj_newsletter.TabIndex = 7;
             cb_filtruj_newsletter.Text = "Tylko z zasubskrybowanym newsletterem";
             cb_filtruj_newsletter.UseVisualStyleBackColor = true;
             // 
             // tb_filtruj_email
             // 
-            tb_filtruj_email.Dock = DockStyle.Top;
-            tb_filtruj_email.Location = new Point(3, 104);
+            tb_filtruj_email.Location = new Point(8, 139);
+            tb_filtruj_email.Margin = new Padding(5);
             tb_filtruj_email.Name = "tb_filtruj_email";
             tb_filtruj_email.PlaceholderText = "Podaj email";
-            tb_filtruj_email.Size = new Size(976, 27);
+            tb_filtruj_email.Size = new Size(966, 27);
             tb_filtruj_email.TabIndex = 3;
             // 
             // tb_filtruj_numer_telefonu
             // 
-            tb_filtruj_numer_telefonu.Dock = DockStyle.Top;
-            tb_filtruj_numer_telefonu.Location = new Point(3, 77);
+            tb_filtruj_numer_telefonu.Location = new Point(8, 102);
+            tb_filtruj_numer_telefonu.Margin = new Padding(5);
             tb_filtruj_numer_telefonu.Name = "tb_filtruj_numer_telefonu";
             tb_filtruj_numer_telefonu.PlaceholderText = "Podaj numer telefonu";
-            tb_filtruj_numer_telefonu.Size = new Size(976, 27);
+            tb_filtruj_numer_telefonu.Size = new Size(966, 27);
             tb_filtruj_numer_telefonu.TabIndex = 2;
             // 
             // tb_filtruj_imie
             // 
-            tb_filtruj_imie.Dock = DockStyle.Top;
-            tb_filtruj_imie.Location = new Point(3, 50);
+            tb_filtruj_imie.Location = new Point(8, 65);
+            tb_filtruj_imie.Margin = new Padding(5);
             tb_filtruj_imie.Name = "tb_filtruj_imie";
             tb_filtruj_imie.PlaceholderText = "Podaj imię";
-            tb_filtruj_imie.Size = new Size(976, 27);
+            tb_filtruj_imie.Size = new Size(966, 27);
             tb_filtruj_imie.TabIndex = 1;
             // 
             // tb_filtruj_nazwisko
             // 
-            tb_filtruj_nazwisko.Dock = DockStyle.Top;
-            tb_filtruj_nazwisko.Location = new Point(3, 23);
+            tb_filtruj_nazwisko.Location = new Point(8, 28);
+            tb_filtruj_nazwisko.Margin = new Padding(5);
             tb_filtruj_nazwisko.Name = "tb_filtruj_nazwisko";
             tb_filtruj_nazwisko.PlaceholderText = "Podaj nazwisko";
-            tb_filtruj_nazwisko.Size = new Size(976, 27);
+            tb_filtruj_nazwisko.Size = new Size(966, 27);
             tb_filtruj_nazwisko.TabIndex = 0;
             // 
             // groupBox3
@@ -182,10 +193,10 @@
             groupBox3.Controls.Add(rb_imie_rosnaco);
             groupBox3.Controls.Add(rb_imie_malejaco);
             groupBox3.Controls.Add(rb_nazwisko_rosnaco);
-            groupBox3.Location = new Point(406, 190);
+            groupBox3.Location = new Point(400, 190);
             groupBox3.Name = "groupBox3";
             groupBox3.Padding = new Padding(10, 3, 3, 3);
-            groupBox3.Size = new Size(336, 147);
+            groupBox3.Size = new Size(349, 147);
             groupBox3.TabIndex = 6;
             groupBox3.TabStop = false;
             groupBox3.Text = "Sortowanie";
@@ -199,6 +210,7 @@
             rb_nazwisko_malejaco.TabIndex = 3;
             rb_nazwisko_malejaco.Text = "Nazwisko malejąco";
             rb_nazwisko_malejaco.UseVisualStyleBackColor = true;
+            rb_nazwisko_malejaco.Click += btn_wyswietl_liste_Click;
             // 
             // rb_imie_rosnaco
             // 
@@ -209,6 +221,7 @@
             rb_imie_rosnaco.TabIndex = 2;
             rb_imie_rosnaco.Text = "Imię rosnąco";
             rb_imie_rosnaco.UseVisualStyleBackColor = true;
+            rb_imie_rosnaco.Click += btn_wyswietl_liste_Click;
             // 
             // rb_imie_malejaco
             // 
@@ -219,6 +232,7 @@
             rb_imie_malejaco.TabIndex = 1;
             rb_imie_malejaco.Text = "Imię malejąco";
             rb_imie_malejaco.UseVisualStyleBackColor = true;
+            rb_imie_malejaco.Click += btn_wyswietl_liste_Click;
             // 
             // rb_nazwisko_rosnaco
             // 
@@ -231,6 +245,7 @@
             rb_nazwisko_rosnaco.TabStop = true;
             rb_nazwisko_rosnaco.Text = "Nazwisko rosnąco";
             rb_nazwisko_rosnaco.UseVisualStyleBackColor = true;
+            rb_nazwisko_rosnaco.Click += btn_wyswietl_liste_Click;
             // 
             // groupBox2
             // 
@@ -362,17 +377,6 @@
             data_klienci.Size = new Size(982, 190);
             data_klienci.TabIndex = 2;
             // 
-            // btn_wyswietl_liste
-            // 
-            btn_wyswietl_liste.Dock = DockStyle.Bottom;
-            btn_wyswietl_liste.Location = new Point(0, 523);
-            btn_wyswietl_liste.Name = "btn_wyswietl_liste";
-            btn_wyswietl_liste.Size = new Size(982, 29);
-            btn_wyswietl_liste.TabIndex = 3;
-            btn_wyswietl_liste.Text = "Wyświetl Listę";
-            btn_wyswietl_liste.UseVisualStyleBackColor = true;
-            btn_wyswietl_liste.Click += btn_wyswietl_liste_Click;
-            // 
             // Klienci
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -384,6 +388,7 @@
             Name = "Klienci";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Klienci";
+            Load += btn_wyswietl_liste_Click;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             groupBox4.ResumeLayout(false);
@@ -405,7 +410,6 @@
         private Label label1;
         private Panel panel1;
         private DataGridView data_klienci;
-        private Button btn_wyswietl_liste;
         private GroupBox groupBox1;
         private TextBox tb_nazwisko;
         private TextBox tb_email;
@@ -429,5 +433,6 @@
         private TextBox tb_filtruj_nazwisko;
         private Button btn_resetuj_filtry;
         private CheckBox cb_filtruj_newsletter;
+        private Button button1;
     }
 }

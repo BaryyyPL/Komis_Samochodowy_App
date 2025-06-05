@@ -89,6 +89,8 @@ namespace Komis_Samochodowy_App
                 tb_email.Clear();
                 cb_newsletter.Checked = false;
                 tb_numer_telefonu.Clear();
+
+                btn_wyswietl_liste_Click(sender, e);
             }
             else
             {

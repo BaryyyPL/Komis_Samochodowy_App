@@ -29,6 +29,65 @@ namespace Komis_Samochodowy_App
 
         private void btn_wyswietl_liste_Click(object sender, EventArgs e)
         {
+
+            if (tb_filtruj_nazwisko.Text.Length > 0)
+            {
+                komis_pracownicy.Filtruj_Nazwisko(tb_filtruj_nazwisko.Text);
+            }
+            if (tb_filtruj_imie.Text.Length > 0)
+            {
+                komis_pracownicy.Filtruj_Imie(tb_filtruj_imie.Text);
+            }
+            if (tb_filtruj_numer_telefonu.Text.Length > 0)
+            {
+                komis_pracownicy.Filtruj_Numer_Telefonu(tb_filtruj_numer_telefonu.Text);
+            }
+            if (tb_filtruj_email.Text.Length > 0)
+            {
+                komis_pracownicy.Filtruj_Email(tb_filtruj_email.Text);
+            }
+            if (tb_filtruj_stanowisko.Text.Length > 0)
+            {
+                komis_pracownicy.Filtruj_Stanowisko(tb_filtruj_stanowisko.Text);
+            }
+            if (tb_filtruj_pensja_minimalna.Text.Length > 0 || tb_filtruj_pensja_maksymalna.Text.Length > 0)
+            {
+                komis_pracownicy.Filtruj_Pensja(tb_filtruj_pensja_minimalna.Text, tb_filtruj_pensja_maksymalna.Text);
+            }
+
+            if (rb_nazwisko_rosnaco.Checked)
+            {
+                komis_pracownicy.Sortuj_Nazwisko_Rosnaco();
+            }
+            else if (rb_nazwisko_malejaco.Checked)
+            {
+                komis_pracownicy.Sortuj_Nazwisko_Malejaco();
+            }
+            else if (rb_imie_rosnaco.Checked)
+            {
+                komis_pracownicy.Sortuj_Imie_Rosnaco();
+            }
+            else if (rb_imie_malejco.Checked)
+            {
+                komis_pracownicy.Sortuj_Imie_Malejaco();
+            }
+            else if (rb_stanowisko_rosnaco.Checked)
+            {
+                komis_pracownicy.Sortuj_Stanowisko_Rosnaco();
+            }
+            else if (rb_stanowisko_malejaco.Checked)
+            {
+                komis_pracownicy.Sortuj_Stanowisko_Malejaco();
+            }
+            else if (rb_pensja_rosnaco.Checked)
+            {
+                komis_pracownicy.Sortuj_Pensja_Rosnaco();
+            }
+            else
+            {
+                komis_pracownicy.Sortuj_Pensja_Malejaco();
+            }
+
             var lista = komis_pracownicy.Lista_Wszystkich_Pracownikow();
             data_pracownicy.DataSource = lista.ToList();
 
@@ -38,6 +97,56 @@ namespace Komis_Samochodowy_App
             data_pracownicy.Columns["Email"].DisplayIndex = 3;
             data_pracownicy.Columns["Stanowisko"].DisplayIndex = 4;
             data_pracownicy.Columns["Pensja"].DisplayIndex = 5;
+        }
+
+        private void btn_dodaj_pracownika_Click(object sender, EventArgs e)
+        {
+            if (komis_pracownicy.Dodaj_Pracownika(tb_imie.Text, tb_nazwisko.Text, tb_numer_telefonu.Text, tb_email.Text, tb_stanowisko.Text, tb_pensja.Text))
+            {
+                MessageBox.Show("Dodano pracownika", "Sukces");
+                tb_imie.Clear();
+                tb_nazwisko.Clear();
+                tb_email.Clear();
+                tb_numer_telefonu.Clear();
+                tb_stanowisko.Clear();
+                tb_pensja.Clear();
+
+                btn_wyswietl_liste_Click(sender, e);
+            }
+            else
+            {
+                MessageBox.Show("Brakujące dane pracownika", "Niepowodzenia");
+            }
+        }
+
+        private void btn_daj_podwyzke_Click(object sender, EventArgs e)
+        {
+            if (komis_pracownicy.Daj_Podwyzke_Po_Numerze_Telefonu(tb_podwyzka_numer_telefonu.Text, tb_podwyzka_kwota_podwyzki.Text))
+            {
+                MessageBox.Show("Sukces", "Sukces");
+                tb_podwyzka_kwota_podwyzki.Clear();
+                tb_podwyzka_numer_telefonu.Clear();
+
+                btn_wyswietl_liste_Click(sender, e);
+            }
+            else
+            {
+                MessageBox.Show("Niepowodzenie", "Niepowodzenia");
+            }
+        }
+
+        private void btn_resetuj_filtry_Click(object sender, EventArgs e)
+        {
+            komis_pracownicy.Resetuj_Filtry();
+            tb_filtruj_nazwisko.Clear();
+            tb_filtruj_imie.Clear();
+            tb_filtruj_numer_telefonu.Clear();
+            tb_filtruj_email.Clear();
+            tb_filtruj_pensja_maksymalna.Clear();
+            tb_filtruj_pensja_minimalna.Clear();
+            tb_filtruj_stanowisko.Clear();
+
+            btn_wyswietl_liste_Click(sender, e);
         }
     }
 }
