@@ -32,7 +32,6 @@
             label1 = new Label();
             panel1 = new Panel();
             data_samochody_dostawcze = new DataGridView();
-            btn_wyswietl_liste = new Button();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)data_samochody_dostawcze).BeginInit();
             SuspendLayout();
@@ -63,7 +62,6 @@
             // panel1
             // 
             panel1.Controls.Add(data_samochody_dostawcze);
-            panel1.Controls.Add(btn_wyswietl_liste);
             panel1.Dock = DockStyle.Fill;
             panel1.Location = new Point(0, 72);
             panel1.Name = "panel1";
@@ -89,17 +87,6 @@
             data_samochody_dostawcze.Size = new Size(982, 190);
             data_samochody_dostawcze.TabIndex = 2;
             // 
-            // btn_wyswietl_liste
-            // 
-            btn_wyswietl_liste.Dock = DockStyle.Bottom;
-            btn_wyswietl_liste.Location = new Point(0, 523);
-            btn_wyswietl_liste.Name = "btn_wyswietl_liste";
-            btn_wyswietl_liste.Size = new Size(982, 29);
-            btn_wyswietl_liste.TabIndex = 3;
-            btn_wyswietl_liste.Text = "Wyświetl Listę";
-            btn_wyswietl_liste.UseVisualStyleBackColor = true;
-            btn_wyswietl_liste.Click += btn_wyswietl_liste_Click;
-            // 
             // Samochody_Dostawcze
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -111,6 +98,7 @@
             Name = "Samochody_Dostawcze";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Samochody Dostawcze";
+            Load += btn_wyswietl_liste_Click;
             panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)data_samochody_dostawcze).EndInit();
             ResumeLayout(false);
@@ -123,6 +111,5 @@
         private Label label1;
         private Panel panel1;
         private DataGridView data_samochody_dostawcze;
-        private Button btn_wyswietl_liste;
     }
 }

@@ -15,15 +15,18 @@ namespace Komis_Samochodowy_App
     {
 
         Komis_samochodowy_samochody_osobowe komis_osobowe;
+        Komis_samochodowy komis;
 
         public Samochody_Osobowe(Komis_samochodowy komis)
         {
             InitializeComponent();
             komis_osobowe = new Komis_samochodowy_samochody_osobowe(komis);
+            this.komis = komis;
         }
 
         private void btn_cofnij_Click(object sender, EventArgs e)
         {
+            komis.Czysc_Listy();
             this.Close();
         }
 
@@ -44,10 +47,11 @@ namespace Komis_Samochodowy_App
             data_samochody_osobowe.Columns["Rodzaj_Paliwa"].DisplayIndex = 9;
             data_samochody_osobowe.Columns["Rodzaj_Napedu"].DisplayIndex = 10;
             data_samochody_osobowe.Columns["Skrzynia_Biegow"].DisplayIndex = 11;
-            data_samochody_osobowe.Columns["Kraj_Pochodzenia"].DisplayIndex = 12;
-            data_samochody_osobowe.Columns["Nieuszkodzony"].DisplayIndex = 13;
-            data_samochody_osobowe.Columns["Sprzedany"].DisplayIndex = 14;
-            data_samochody_osobowe.Columns["Wlasciciel"].DisplayIndex = 15;
+            data_samochody_osobowe.Columns["Kolor"].DisplayIndex = 12;
+            data_samochody_osobowe.Columns["Kraj_Pochodzenia"].DisplayIndex = 13;
+            data_samochody_osobowe.Columns["Nieuszkodzony"].DisplayIndex = 14;
+            data_samochody_osobowe.Columns["Sprzedany"].DisplayIndex = 15;
+            data_samochody_osobowe.Columns["Wlasciciel"].DisplayIndex = 16;
         }
     }
 }

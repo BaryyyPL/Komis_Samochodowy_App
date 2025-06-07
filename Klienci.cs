@@ -15,15 +15,18 @@ namespace Komis_Samochodowy_App
     {
 
         Komis_samochodowy_klienci komis_klienci;
+        Komis_samochodowy komis;
 
         public Klienci(Komis_samochodowy komis)
         {
             InitializeComponent();
             komis_klienci = new Komis_samochodowy_klienci(komis);
+            this.komis = komis;
         }
 
         private void btn_cofnij_Click(object sender, EventArgs e)
         {
+            komis.Czysc_Listy();
             this.Close();
         }
 
