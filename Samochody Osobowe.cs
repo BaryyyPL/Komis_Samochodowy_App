@@ -32,7 +32,55 @@ namespace Komis_Samochodowy_App
 
         private void btn_wyswietl_liste_Click(object sender, EventArgs e)
         {
-            var lista = komis_osobowe.Lista_Wszystkich_Samochodow_Osobowych();
+            if (!cb_filtruj_malejaco.Checked)
+            {
+                if (rb_filtruj_cena.Checked) 
+                {
+                    komis_osobowe.Sortuj_Cena_Rosnaco();
+                }
+                if (rb_filtruj_marka.Checked)
+                {
+                    komis_osobowe.Sortuj_Alfabetycznie_Rosnaco();
+                }
+                if (rb_filtruj_moc.Checked)
+                {
+                    komis_osobowe.Sortuj_Cena_Rosnaco();
+                }
+                if (rb_filtruj_przebieg.Checked)
+                {
+                    komis_osobowe.Sortuj_Przebieg_Rosnaco();
+                }
+                if (rb_filtruj_rocznik.Checked)
+                {
+                    komis_osobowe.Sortuj_Rocznik_Rosnaco();
+                }
+            }
+            else
+            {
+                if (rb_filtruj_cena.Checked)
+                {
+                    komis_osobowe.Sortuj_Cena_Malejaco();
+                }
+                if (rb_filtruj_marka.Checked)
+                {
+                    komis_osobowe.Sortuj_Alfabetycznie_Malejaco();
+                }
+                if (rb_filtruj_moc.Checked)
+                {
+                    komis_osobowe.Sortuj_Cena_Malejaco();
+                }
+                if (rb_filtruj_przebieg.Checked)
+                {
+                    komis_osobowe.Sortuj_Przebieg_Malejaco();
+                }
+                if (rb_filtruj_rocznik.Checked)
+                {
+                    komis_osobowe.Sortuj_Rocznik_Malejaco();
+                }
+            }
+
+
+                var lista = komis_osobowe.Lista_Wszystkich_Samochodow_Osobowych();
             data_samochody_osobowe.DataSource = lista.ToList();
 
             data_samochody_osobowe.Columns["Marka"].DisplayIndex = 0;
