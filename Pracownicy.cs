@@ -32,32 +32,6 @@ namespace Komis_Samochodowy_App
 
         private void btn_wyswietl_liste_Click(object sender, EventArgs e)
         {
-
-            if (tb_filtruj_nazwisko.Text.Length > 0)
-            {
-                komis_pracownicy.Filtruj_Nazwisko(tb_filtruj_nazwisko.Text);
-            }
-            if (tb_filtruj_imie.Text.Length > 0)
-            {
-                komis_pracownicy.Filtruj_Imie(tb_filtruj_imie.Text);
-            }
-            if (tb_filtruj_numer_telefonu.Text.Length > 0)
-            {
-                komis_pracownicy.Filtruj_Numer_Telefonu(tb_filtruj_numer_telefonu.Text);
-            }
-            if (tb_filtruj_email.Text.Length > 0)
-            {
-                komis_pracownicy.Filtruj_Email(tb_filtruj_email.Text);
-            }
-            if (tb_filtruj_stanowisko.Text.Length > 0)
-            {
-                komis_pracownicy.Filtruj_Stanowisko(tb_filtruj_stanowisko.Text);
-            }
-            if (tb_filtruj_pensja_minimalna.Text.Length > 0 || tb_filtruj_pensja_maksymalna.Text.Length > 0)
-            {
-                komis_pracownicy.Filtruj_Pensja(tb_filtruj_pensja_minimalna.Text, tb_filtruj_pensja_maksymalna.Text);
-            }
-
             if (rb_nazwisko_rosnaco.Checked)
             {
                 komis_pracownicy.Sortuj_Nazwisko_Rosnaco();
@@ -150,6 +124,38 @@ namespace Komis_Samochodowy_App
             tb_filtruj_stanowisko.Clear();
 
             btn_wyswietl_liste_Click(sender, e);
+        }
+
+        private void btn_zastosuj_filtry_Click(object sender, EventArgs e)
+        {
+            if (tb_filtruj_nazwisko.Text.Length > 0)
+            {
+                komis_pracownicy.Filtruj_Nazwisko(tb_filtruj_nazwisko.Text);
+            }
+            if (tb_filtruj_imie.Text.Length > 0)
+            {
+                komis_pracownicy.Filtruj_Imie(tb_filtruj_imie.Text);
+            }
+            if (tb_filtruj_numer_telefonu.Text.Length > 0)
+            {
+                komis_pracownicy.Filtruj_Numer_Telefonu(tb_filtruj_numer_telefonu.Text);
+            }
+            if (tb_filtruj_email.Text.Length > 0)
+            {
+                komis_pracownicy.Filtruj_Email(tb_filtruj_email.Text);
+            }
+            if (tb_filtruj_stanowisko.Text.Length > 0)
+            {
+                komis_pracownicy.Filtruj_Stanowisko(tb_filtruj_stanowisko.Text);
+            }
+            if (tb_filtruj_pensja_minimalna.Text.Length > 0 || tb_filtruj_pensja_maksymalna.Text.Length > 0)
+            {
+                komis_pracownicy.Filtruj_Pensja(tb_filtruj_pensja_minimalna.Text, tb_filtruj_pensja_maksymalna.Text);
+            }
+
+            btn_wyswietl_liste_Click(sender, e);
+
+            komis_pracownicy.Resetuj_Filtry();
         }
     }
 }

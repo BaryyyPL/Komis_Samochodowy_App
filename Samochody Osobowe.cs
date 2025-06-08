@@ -163,6 +163,25 @@ namespace Komis_Samochodowy_App
             cb_kraj_pochodzenia.SelectedItem = null;
             cb_kraj_pochodzenia.SelectedText = "Kraj pochodzenia";
 
+            cb_filtruj_rodzaj_paliwa.DataSource = Enum.GetValues(typeof(Rodzaj_paliwa));
+            cb_filtruj_rodzaj_paliwa.SelectedItem = null;
+            cb_filtruj_rodzaj_paliwa.SelectedText = "Rodzaj paliwa";
+            cb_filtruj_rodzaj_nadwozia.DataSource = Enum.GetValues(typeof(Rodzaj_nadwozia));
+            cb_filtruj_rodzaj_nadwozia.SelectedItem = null;
+            cb_filtruj_rodzaj_nadwozia.SelectedText = "Rodzaj nadwozia";
+            cb_filtruj_rodzaj_napedu.DataSource = Enum.GetValues(typeof(Rodzaj_napedu));
+            cb_filtruj_rodzaj_napedu.SelectedItem = null;
+            cb_filtruj_rodzaj_napedu.SelectedText = "Rodzaj napedu";
+            cb_filtruj_skrzynia_biegow.DataSource = Enum.GetValues(typeof(Skrzynia_biegow));
+            cb_filtruj_skrzynia_biegow.SelectedItem = null;
+            cb_filtruj_skrzynia_biegow.SelectedText = "Skrzynia biegow";
+            cb_filtruj_kraj_pochodzenia.DataSource = Enum.GetValues(typeof(Kraj_pochodzenia));
+            cb_filtruj_kraj_pochodzenia.SelectedItem = null;
+            cb_filtruj_kraj_pochodzenia.SelectedText = "Kraj pochodzenia";
+            cb_filtruj_wlasciciel.DataSource = komis.klienci.ToList();
+            cb_filtruj_wlasciciel.SelectedItem = null;
+            cb_filtruj_wlasciciel.SelectedText = "Wlasciciel";
+
             btn_wyswietl_liste_Click(sender, e);
         }
 
@@ -197,8 +216,8 @@ namespace Komis_Samochodowy_App
                 return;
             }
 
-            if(komis_osobowe.Dodaj_Samochod_Osobowy(tb_marka.Text, tb_model.Text, tb_cena.Text,
-               tb_rok_produkcji.Text, tb_przebieg.Text, rodzaj_paliwa, tb_vin.Text, !cb_uszkodzony.Checked, 
+            if (komis_osobowe.Dodaj_Samochod_Osobowy(tb_marka.Text, tb_model.Text, tb_cena.Text,
+               tb_rok_produkcji.Text, tb_przebieg.Text, rodzaj_paliwa, tb_vin.Text, !cb_uszkodzony.Checked,
                tb_pojemnosc_silnika.Text, tb_moc.Text, skrzynia_biegow, kraj_pochodzenia, rodzaj_napedu,
                tb_kolor.Text, rodzaj_nadwozia))
             {
@@ -229,7 +248,124 @@ namespace Komis_Samochodowy_App
             {
                 MessageBox.Show("Niepowodzenie", "Niepowodzenie");
             }
-            
+
+        }
+
+        private void btn_filtruj_resetuj_Click(object sender, EventArgs e)
+        {
+            cb_filtruj_rodzaj_paliwa.Text = null;
+            cb_filtruj_rodzaj_nadwozia.Text = null;
+            cb_filtruj_rodzaj_napedu.Text = null;
+            cb_filtruj_skrzynia_biegow.Text = null;
+            cb_filtruj_kraj_pochodzenia.Text = null;
+            cb_filtruj_wlasciciel.Text = null;
+
+            cb_filtruj_rodzaj_paliwa.SelectedItem = null;
+            cb_filtruj_rodzaj_paliwa.SelectedText = "Rodzaj paliwa";                   
+            cb_filtruj_rodzaj_nadwozia.SelectedItem = null;
+            cb_filtruj_rodzaj_nadwozia.SelectedText = "Rodzaj nadwozia";
+            cb_filtruj_rodzaj_napedu.SelectedItem = null;
+            cb_filtruj_rodzaj_napedu.SelectedText = "Rodzaj napedu";
+            cb_filtruj_skrzynia_biegow.SelectedItem = null;
+            cb_filtruj_skrzynia_biegow.SelectedText = "Skrzynia biegow";
+            cb_filtruj_kraj_pochodzenia.SelectedItem = null;
+            cb_filtruj_kraj_pochodzenia.SelectedText = "Kraj pochodzenia";
+            cb_filtruj_wlasciciel.SelectedItem = null;
+            cb_filtruj_wlasciciel.SelectedText = "Wlasciciel";
+            tb_filtruj_marka.Clear();
+            tb_filtruj_model.Clear();
+            tb_filtruj_vin.Clear();
+            tb_filtruj_kolor.Clear();
+            cb_uszkodzony.Checked = false;
+            cb_filtruj_sprzedany.Checked = false;
+            tb_minimalna_cena.Clear();
+            tb_maksymalna_cena.Clear();
+            tb_minimalna_moc.Clear();
+            tb_maksymalna_moc.Clear();
+            tb_minimalna_pojemnosc.Clear();
+            tb_maksymalna_pojemnosc.Clear();
+            tb_minimalny_przebieg.Clear();
+            tb_maksymalny_przebieg.Clear();
+            tb_minimalny_rok.Clear();
+            tb_maksymalny_rok.Clear();
+
+            komis_osobowe.Resetuj_Filtry();
+
+            btn_wyswietl_liste_Click(sender, e);
+        }
+
+        private void btn_filtruj_zastosuj_Click(object sender, EventArgs e)
+        {
+            if (cb_filtruj_rodzaj_paliwa.SelectedItem != null)
+            {
+                komis_osobowe.Filtruj_Paliwo((Rodzaj_paliwa)cb_filtruj_rodzaj_paliwa.SelectedItem);
+            }
+            if (cb_filtruj_rodzaj_nadwozia.SelectedItem != null)
+            {
+                komis_osobowe.Filtruj_Nadwozie((Rodzaj_nadwozia)cb_filtruj_rodzaj_nadwozia.SelectedItem);
+            }
+            if (cb_filtruj_rodzaj_napedu.SelectedItem != null)
+            {
+                komis_osobowe.Filtruj_Naped((Rodzaj_napedu)cb_filtruj_rodzaj_napedu.SelectedItem);
+            }
+            if (cb_filtruj_skrzynia_biegow.SelectedItem != null)
+            {
+                komis_osobowe.Filtruj_Skrzynia((Skrzynia_biegow)cb_filtruj_skrzynia_biegow.SelectedItem);
+            }
+            if (cb_filtruj_kraj_pochodzenia.SelectedItem != null)
+            {
+                komis_osobowe.Filtruj_Kraj((Kraj_pochodzenia)cb_filtruj_kraj_pochodzenia.SelectedItem);
+            }
+            if (cb_filtruj_wlasciciel.SelectedItem != null)
+            {
+                komis_osobowe.Filtruj_Wlasciciel((Klient)cb_filtruj_wlasciciel.SelectedItem);
+            }
+            if (cb_filtruj_nieuszkodzony.Checked)
+            {
+                komis_osobowe.Filtruj_Nieuszkodzony();
+            }
+            if (tb_filtruj_marka.Text.Length > 0)
+            {
+                komis_osobowe.Filtruj_Marka(tb_filtruj_marka.Text);
+            }
+            if (tb_filtruj_model.Text.Length > 0)
+            {
+                komis_osobowe.Filtruj_Model(tb_filtruj_model.Text);
+            }
+            if (tb_filtruj_vin.Text.Length > 0)
+            {
+                komis_osobowe.Filtruj_VIN(tb_filtruj_vin.Text);
+            }
+            if (tb_filtruj_kolor.Text.Length > 0)
+            {
+                komis_osobowe.Filtruj_Kolor(tb_filtruj_kolor.Text);
+            }
+            if (tb_minimalna_cena.Text.Length > 0 || tb_maksymalna_cena.Text.Length > 0)
+            {
+                komis_osobowe.Filtruj_Cena(tb_minimalna_cena.Text, tb_maksymalna_cena.Text);
+            }
+            if (tb_minimalna_moc.Text.Length > 0 || tb_maksymalna_moc.Text.Length > 0)
+            {
+                komis_osobowe.Filtruj_Moc(tb_minimalna_moc.Text, tb_maksymalna_moc.Text);
+            }
+            if (tb_minimalna_pojemnosc.Text.Length > 0 || tb_maksymalna_pojemnosc.Text.Length > 0)
+            {
+                komis_osobowe.Filtruj_Pojemnosc(tb_minimalna_pojemnosc.Text, tb_maksymalna_pojemnosc.Text);
+            }
+            if (tb_minimalny_przebieg.Text.Length > 0 || tb_maksymalny_przebieg.Text.Length > 0)
+            {
+                komis_osobowe.Filtruj_Przebieg(tb_minimalny_przebieg.Text, tb_maksymalny_przebieg.Text);
+            }
+            if (tb_minimalny_rok.Text.Length > 0 || tb_maksymalny_rok.Text.Length > 0)
+            {
+                komis_osobowe.Filtruj_Rok(tb_minimalny_rok.Text, tb_maksymalny_rok.Text);
+            }
+
+            komis_osobowe.Filtruj_Sprzedany(cb_filtruj_sprzedany.Checked);
+
+            btn_wyswietl_liste_Click(sender, e);
+
+            komis_osobowe.Resetuj_Filtry();
         }
     }
 }

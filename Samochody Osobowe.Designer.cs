@@ -734,6 +734,7 @@
             btn_filtruj_zastosuj.TabIndex = 22;
             btn_filtruj_zastosuj.Text = "Zastosuj";
             btn_filtruj_zastosuj.UseVisualStyleBackColor = true;
+            btn_filtruj_zastosuj.Click += btn_filtruj_zastosuj_Click;
             // 
             // btn_filtruj_resetuj
             // 
@@ -743,6 +744,7 @@
             btn_filtruj_resetuj.TabIndex = 23;
             btn_filtruj_resetuj.Text = "Resetuj";
             btn_filtruj_resetuj.UseVisualStyleBackColor = true;
+            btn_filtruj_resetuj.Click += btn_filtruj_resetuj_Click;
             // 
             // data_samochody_osobowe
             // 

@@ -32,29 +32,7 @@ namespace Komis_Samochodowy_App
 
         private void btn_wyswietl_liste_Click(object sender, EventArgs e)
         {
-
-            if (tb_filtruj_nazwisko.Text.Length > 0)
-            {
-                komis_klienci.Filtruj_Nazwisko(tb_filtruj_nazwisko.Text);
-            }
-            if (tb_filtruj_imie.Text.Length > 0)
-            {
-                komis_klienci.Filtruj_Imie(tb_filtruj_imie.Text);
-            }
-            if (tb_filtruj_numer_telefonu.Text.Length > 0)
-            {
-                komis_klienci.Filtruj_Numer_Telefonu(tb_filtruj_numer_telefonu.Text);
-            }
-            if (tb_filtruj_email.Text.Length > 0)
-            {
-                komis_klienci.Filtruj_Email(tb_filtruj_email.Text);
-            }
-            if (cb_filtruj_newsletter.Checked == true)
-            {
-                komis_klienci.Filtruj_Newsletter();
-            }
-
-            if (rb_nazwisko_rosnaco.Checked)
+             if (rb_nazwisko_rosnaco.Checked)
             {
                 komis_klienci.Sortuj_Nazwisko_Rosnaco();
             }
@@ -128,6 +106,34 @@ namespace Komis_Samochodowy_App
             cb_filtruj_newsletter.Checked = false;
 
             btn_wyswietl_liste_Click(sender, e);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (tb_filtruj_nazwisko.Text.Length > 0)
+            {
+                komis_klienci.Filtruj_Nazwisko(tb_filtruj_nazwisko.Text);
+            }
+            if (tb_filtruj_imie.Text.Length > 0)
+            {
+                komis_klienci.Filtruj_Imie(tb_filtruj_imie.Text);
+            }
+            if (tb_filtruj_numer_telefonu.Text.Length > 0)
+            {
+                komis_klienci.Filtruj_Numer_Telefonu(tb_filtruj_numer_telefonu.Text);
+            }
+            if (tb_filtruj_email.Text.Length > 0)
+            {
+                komis_klienci.Filtruj_Email(tb_filtruj_email.Text);
+            }
+            if (cb_filtruj_newsletter.Checked == true)
+            {
+                komis_klienci.Filtruj_Newsletter();
+            }
+
+            btn_wyswietl_liste_Click(sender, e);
+
+            komis_klienci.Resetuj_Filtry();
         }
     }
 }

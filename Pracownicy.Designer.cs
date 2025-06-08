@@ -134,7 +134,7 @@
             btn_zastosuj_filtry.TabIndex = 8;
             btn_zastosuj_filtry.Text = "Zastosuj filtry";
             btn_zastosuj_filtry.UseVisualStyleBackColor = true;
-            btn_zastosuj_filtry.Click += btn_wyswietl_liste_Click;
+            btn_zastosuj_filtry.Click += btn_zastosuj_filtry_Click;
             // 
             // btn_resetuj_filtry
             // 

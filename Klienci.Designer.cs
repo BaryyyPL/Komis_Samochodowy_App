@@ -125,7 +125,7 @@
             button1.TabIndex = 9;
             button1.Text = "Zastosuj filtry";
             button1.UseVisualStyleBackColor = true;
-            button1.Click += btn_wyswietl_liste_Click;
+            button1.Click += button1_Click;
             // 
             // btn_resetuj_filtry
             // 
