@@ -123,7 +123,7 @@ namespace Komis_Samochodowy_App
 
             if (klient != null)
             {
-                if (komis_osobowe.Sprzedaj_Pojazd_Po_Vin(tb_sprzedaj_vin.Text, klient.Numer_Telefonu))
+                if (komis_osobowe.Sprzedaj_Pojazd_Po_Vin(tb_sprzedaj_vin.Text, klient))
                 {
                     MessageBox.Show($"Sprzedano pojazd o Vin: {tb_sprzedaj_vin.Text}", "Sukces");
                     cb_sprzedaj_klient.SelectedItem = null;
