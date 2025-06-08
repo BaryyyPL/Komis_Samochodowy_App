@@ -104,7 +104,7 @@ namespace Komis_Samochodowy_App
 
         private void btn_zmien_cene_Click(object sender, EventArgs e)
         {
-            if(komis_osobowe.Zmien_Cene_Pojazdu_Po_Vin(tb_zmien_vin.Text, tb_zmien_cena.Text))
+            if (komis_osobowe.Zmien_Cene_Pojazdu_Po_Vin(tb_zmien_vin.Text, tb_zmien_cena.Text))
             {
                 MessageBox.Show($"Zmieniono cenę pojazdu o Vin: {tb_zmien_vin.Text}", "Sukces");
                 tb_zmien_cena.Clear();
@@ -115,6 +115,38 @@ namespace Komis_Samochodowy_App
             {
                 MessageBox.Show("Niepowodzenie", "Niepowodzenie");
             }
+        }
+
+        private void btn_sprzedaj_Click(object sender, EventArgs e)
+        {
+            Klient klient = cb_sprzedaj_klient.SelectedItem as Klient;
+
+            if (klient != null)
+            {
+                if (komis_osobowe.Sprzedaj_Pojazd_Po_Vin(tb_sprzedaj_vin.Text, klient.Numer_Telefonu))
+                {
+                    MessageBox.Show($"Sprzedano pojazd o Vin: {tb_sprzedaj_vin.Text}", "Sukces");
+                    cb_sprzedaj_klient.SelectedItem = null;
+                    tb_sprzedaj_vin.Clear();
+                    btn_wyswietl_liste_Click(sender, e);
+                }
+                else
+                {
+                    MessageBox.Show("Niepowodzenie", "Niepowodzenie");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Niepowodzenie", "Niepowodzenie");
+            }
+        }
+
+        private void Samochody_Osobowe_Load(object sender, EventArgs e)
+        {
+            cb_sprzedaj_klient.DataSource = komis.klienci.ToList();
+            cb_sprzedaj_klient.SelectedItem = null;
+
+            btn_wyswietl_liste_Click(sender, e);
         }
     }
 }

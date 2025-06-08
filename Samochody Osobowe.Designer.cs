@@ -90,6 +90,7 @@
             cb_filtruj_rodzaj_nadwozia = new ComboBox();
             cb_filtruj_wlasciciel = new ComboBox();
             cb_filtruj_nieuszkodzony = new CheckBox();
+            cb_filtruj_sprzedany = new CheckBox();
             btn_filtruj_zastosuj = new Button();
             btn_filtruj_resetuj = new Button();
             panel3 = new Panel();
@@ -202,6 +203,7 @@
             btn_sprzedaj.TabIndex = 2;
             btn_sprzedaj.Text = "Sprzedaj";
             btn_sprzedaj.UseVisualStyleBackColor = true;
+            btn_sprzedaj.Click += btn_sprzedaj_Click;
             // 
             // groupBox2
             // 
@@ -536,6 +538,7 @@
             flowLayoutPanel4.Controls.Add(cb_filtruj_rodzaj_nadwozia);
             flowLayoutPanel4.Controls.Add(cb_filtruj_wlasciciel);
             flowLayoutPanel4.Controls.Add(cb_filtruj_nieuszkodzony);
+            flowLayoutPanel4.Controls.Add(cb_filtruj_sprzedany);
             flowLayoutPanel4.Controls.Add(btn_filtruj_zastosuj);
             flowLayoutPanel4.Controls.Add(btn_filtruj_resetuj);
             flowLayoutPanel4.Dock = DockStyle.Fill;
@@ -714,9 +717,19 @@
             cb_filtruj_nieuszkodzony.Text = "Nieszkodzony";
             cb_filtruj_nieuszkodzony.UseVisualStyleBackColor = true;
             // 
+            // cb_filtruj_sprzedany
+            // 
+            cb_filtruj_sprzedany.AutoSize = true;
+            cb_filtruj_sprzedany.Location = new Point(616, 70);
+            cb_filtruj_sprzedany.Name = "cb_filtruj_sprzedany";
+            cb_filtruj_sprzedany.Size = new Size(100, 24);
+            cb_filtruj_sprzedany.TabIndex = 24;
+            cb_filtruj_sprzedany.Text = "Sprzedany";
+            cb_filtruj_sprzedany.UseVisualStyleBackColor = true;
+            // 
             // btn_filtruj_zastosuj
             // 
-            btn_filtruj_zastosuj.Location = new Point(616, 70);
+            btn_filtruj_zastosuj.Location = new Point(722, 70);
             btn_filtruj_zastosuj.Name = "btn_filtruj_zastosuj";
             btn_filtruj_zastosuj.Size = new Size(115, 28);
             btn_filtruj_zastosuj.TabIndex = 22;
@@ -725,7 +738,7 @@
             // 
             // btn_filtruj_resetuj
             // 
-            btn_filtruj_resetuj.Location = new Point(737, 70);
+            btn_filtruj_resetuj.Location = new Point(843, 70);
             btn_filtruj_resetuj.Name = "btn_filtruj_resetuj";
             btn_filtruj_resetuj.Size = new Size(115, 28);
             btn_filtruj_resetuj.TabIndex = 23;
@@ -769,7 +782,7 @@
             Name = "Samochody_Osobowe";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Samochody Osobowe";
-            Load += btn_wyswietl_liste_Click;
+            Load += Samochody_Osobowe_Load;
             panel1.ResumeLayout(false);
             flowLayoutPanel1.ResumeLayout(false);
             flowLayoutPanel1.PerformLayout();
@@ -863,5 +876,6 @@
         private CheckBox cb_filtruj_nieuszkodzony;
         private Button btn_filtruj_zastosuj;
         private Button btn_filtruj_resetuj;
+        private CheckBox cb_filtruj_sprzedany;
     }
 }
