@@ -64,7 +64,7 @@
             cb_skrzynia_biegow = new ComboBox();
             cb_kraj_pochodzenia = new ComboBox();
             cb_rodzaj_napedu = new ComboBox();
-            cb_rodzaj_nadowzia = new ComboBox();
+            cb_rodzaj_nadwozia = new ComboBox();
             cb_uszkodzony = new CheckBox();
             btn_dodaj = new Button();
             groupBox5 = new GroupBox();
@@ -93,7 +93,6 @@
             cb_filtruj_sprzedany = new CheckBox();
             btn_filtruj_zastosuj = new Button();
             btn_filtruj_resetuj = new Button();
-            panel3 = new Panel();
             data_samochody_osobowe = new DataGridView();
             panel1.SuspendLayout();
             flowLayoutPanel1.SuspendLayout();
@@ -126,7 +125,7 @@
             btn_cofnij.Dock = DockStyle.Bottom;
             btn_cofnij.Location = new Point(0, 624);
             btn_cofnij.Name = "btn_cofnij";
-            btn_cofnij.Size = new Size(982, 29);
+            btn_cofnij.Size = new Size(983, 29);
             btn_cofnij.TabIndex = 2;
             btn_cofnij.Text = "Cofnij";
             btn_cofnij.UseVisualStyleBackColor = true;
@@ -139,7 +138,7 @@
             panel1.Dock = DockStyle.Fill;
             panel1.Location = new Point(0, 72);
             panel1.Name = "panel1";
-            panel1.Size = new Size(982, 552);
+            panel1.Size = new Size(983, 552);
             panel1.TabIndex = 3;
             // 
             // flowLayoutPanel1
@@ -147,12 +146,11 @@
             flowLayoutPanel1.Controls.Add(panel2);
             flowLayoutPanel1.Controls.Add(groupBox4);
             flowLayoutPanel1.Controls.Add(groupBox5);
-            flowLayoutPanel1.Controls.Add(panel3);
             flowLayoutPanel1.Dock = DockStyle.Fill;
             flowLayoutPanel1.FlowDirection = FlowDirection.TopDown;
             flowLayoutPanel1.Location = new Point(0, 190);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new Size(982, 362);
+            flowLayoutPanel1.Size = new Size(983, 362);
             flowLayoutPanel1.TabIndex = 3;
             // 
             // panel2
@@ -365,7 +363,7 @@
             flowLayoutPanel3.Controls.Add(cb_skrzynia_biegow);
             flowLayoutPanel3.Controls.Add(cb_kraj_pochodzenia);
             flowLayoutPanel3.Controls.Add(cb_rodzaj_napedu);
-            flowLayoutPanel3.Controls.Add(cb_rodzaj_nadowzia);
+            flowLayoutPanel3.Controls.Add(cb_rodzaj_nadwozia);
             flowLayoutPanel3.Controls.Add(cb_uszkodzony);
             flowLayoutPanel3.Controls.Add(btn_dodaj);
             flowLayoutPanel3.Dock = DockStyle.Fill;
@@ -478,13 +476,13 @@
             cb_rodzaj_napedu.Size = new Size(115, 28);
             cb_rodzaj_napedu.TabIndex = 12;
             // 
-            // cb_rodzaj_nadowzia
+            // cb_rodzaj_nadwozia
             // 
-            cb_rodzaj_nadowzia.FormattingEnabled = true;
-            cb_rodzaj_nadowzia.Location = new Point(608, 36);
-            cb_rodzaj_nadowzia.Name = "cb_rodzaj_nadowzia";
-            cb_rodzaj_nadowzia.Size = new Size(115, 28);
-            cb_rodzaj_nadowzia.TabIndex = 13;
+            cb_rodzaj_nadwozia.FormattingEnabled = true;
+            cb_rodzaj_nadwozia.Location = new Point(608, 36);
+            cb_rodzaj_nadwozia.Name = "cb_rodzaj_nadwozia";
+            cb_rodzaj_nadwozia.Size = new Size(115, 28);
+            cb_rodzaj_nadwozia.TabIndex = 13;
             // 
             // cb_uszkodzony
             // 
@@ -504,6 +502,7 @@
             btn_dodaj.TabIndex = 15;
             btn_dodaj.Text = "Dodaj";
             btn_dodaj.UseVisualStyleBackColor = true;
+            btn_dodaj.Click += btn_dodaj_Click;
             // 
             // groupBox5
             // 
@@ -745,13 +744,6 @@
             btn_filtruj_resetuj.Text = "Resetuj";
             btn_filtruj_resetuj.UseVisualStyleBackColor = true;
             // 
-            // panel3
-            // 
-            panel3.Location = new Point(988, 3);
-            panel3.Name = "panel3";
-            panel3.Size = new Size(1079, 293);
-            panel3.TabIndex = 1;
-            // 
             // data_samochody_osobowe
             // 
             data_samochody_osobowe.AllowUserToAddRows = false;
@@ -768,14 +760,14 @@
             data_samochody_osobowe.ReadOnly = true;
             data_samochody_osobowe.RowHeadersWidth = 51;
             data_samochody_osobowe.RowTemplate.Height = 29;
-            data_samochody_osobowe.Size = new Size(982, 190);
+            data_samochody_osobowe.Size = new Size(983, 190);
             data_samochody_osobowe.TabIndex = 2;
             // 
             // Samochody_Osobowe
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(982, 653);
+            ClientSize = new Size(983, 653);
             Controls.Add(panel1);
             Controls.Add(btn_cofnij);
             Controls.Add(label1);
@@ -814,7 +806,6 @@
         private DataGridView data_samochody_osobowe;
         private FlowLayoutPanel flowLayoutPanel1;
         private Panel panel2;
-        private Panel panel3;
         private GroupBox groupBox1;
         private FlowLayoutPanel flowLayoutPanel2;
         private RadioButton rb_filtruj_cena;
@@ -848,7 +839,7 @@
         private ComboBox cb_skrzynia_biegow;
         private ComboBox cb_kraj_pochodzenia;
         private ComboBox cb_rodzaj_napedu;
-        private ComboBox cb_rodzaj_nadowzia;
+        private ComboBox cb_rodzaj_nadwozia;
         private CheckBox cb_uszkodzony;
         private Button btn_dodaj;
         private GroupBox groupBox5;

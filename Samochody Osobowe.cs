@@ -145,8 +145,91 @@ namespace Komis_Samochodowy_App
         {
             cb_sprzedaj_klient.DataSource = komis.klienci.ToList();
             cb_sprzedaj_klient.SelectedItem = null;
+            cb_sprzedaj_klient.SelectedText = "Klient";
+
+            cb_rodzaj_paliwa.DataSource = Enum.GetValues(typeof(Rodzaj_paliwa));
+            cb_sprzedaj_klient.SelectedItem = null;
+            cb_rodzaj_paliwa.SelectedText = "Rodzaj paliwa";
+            cb_rodzaj_nadwozia.DataSource = Enum.GetValues(typeof(Rodzaj_nadwozia));
+            cb_rodzaj_nadwozia.SelectedItem = null;
+            cb_rodzaj_nadwozia.SelectedText = "Rodzaj nadwozia";
+            cb_rodzaj_napedu.DataSource = Enum.GetValues(typeof(Rodzaj_napedu));
+            cb_rodzaj_napedu.SelectedItem = null;
+            cb_rodzaj_napedu.SelectedText = "Rodzaj napedu";
+            cb_skrzynia_biegow.DataSource = Enum.GetValues(typeof(Skrzynia_biegow));
+            cb_skrzynia_biegow.SelectedItem = null;
+            cb_skrzynia_biegow.SelectedText = "Skrzynia biegow";
+            cb_kraj_pochodzenia.DataSource = Enum.GetValues(typeof(Kraj_pochodzenia));
+            cb_kraj_pochodzenia.SelectedItem = null;
+            cb_kraj_pochodzenia.SelectedText = "Kraj pochodzenia";
 
             btn_wyswietl_liste_Click(sender, e);
+        }
+
+        private void btn_dodaj_Click(object sender, EventArgs e)
+        {
+            Rodzaj_paliwa rodzaj_paliwa;
+            Rodzaj_nadwozia rodzaj_nadwozia;
+            Rodzaj_napedu rodzaj_napedu;
+            Skrzynia_biegow skrzynia_biegow;
+            Kraj_pochodzenia kraj_pochodzenia;
+
+            try
+            {
+                if (cb_rodzaj_paliwa.SelectedItem == null ||
+                    cb_rodzaj_nadwozia.SelectedItem == null ||
+                    cb_rodzaj_napedu.SelectedItem == null ||
+                    cb_skrzynia_biegow.SelectedItem == null ||
+                    cb_kraj_pochodzenia.SelectedItem == null)
+                {
+                    throw new Exception("Nie wszystkie pola zostały wybrane.");
+                }
+
+                rodzaj_paliwa = (Rodzaj_paliwa)cb_rodzaj_paliwa.SelectedItem;
+                rodzaj_nadwozia = (Rodzaj_nadwozia)cb_rodzaj_nadwozia.SelectedItem;
+                rodzaj_napedu = (Rodzaj_napedu)cb_rodzaj_napedu.SelectedItem;
+                skrzynia_biegow = (Skrzynia_biegow)cb_skrzynia_biegow.SelectedItem;
+                kraj_pochodzenia = (Kraj_pochodzenia)cb_kraj_pochodzenia.SelectedItem;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Błąd");
+                return;
+            }
+
+            if(komis_osobowe.Dodaj_Samochod_Osobowy(tb_marka.Text, tb_model.Text, tb_cena.Text,
+               tb_rok_produkcji.Text, tb_przebieg.Text, rodzaj_paliwa, tb_vin.Text, !cb_uszkodzony.Checked, 
+               tb_pojemnosc_silnika.Text, tb_moc.Text, skrzynia_biegow, kraj_pochodzenia, rodzaj_napedu,
+               tb_kolor.Text, rodzaj_nadwozia))
+            {
+                MessageBox.Show("Dodano samochód", "Sukces");
+                tb_marka.Clear();
+                tb_model.Clear();
+                tb_cena.Clear();
+                tb_rok_produkcji.Clear();
+                tb_przebieg.Clear();
+                tb_vin.Clear();
+                cb_rodzaj_paliwa.SelectedItem = null;
+                cb_rodzaj_paliwa.SelectedText = "Rodzaj paliwa";
+                cb_uszkodzony.Checked = false;
+                tb_pojemnosc_silnika.Clear();
+                tb_moc.Clear();
+                tb_kolor.Clear();
+                cb_skrzynia_biegow.SelectedItem = null;
+                cb_skrzynia_biegow.SelectedText = "Skrzynia biegow";
+                cb_kraj_pochodzenia.SelectedItem = null;
+                cb_kraj_pochodzenia.SelectedText = "Kraj pochodzenia";
+                cb_rodzaj_napedu.SelectedItem = null;
+                cb_rodzaj_napedu.SelectedText = "Rodzaj napedu";
+                cb_rodzaj_nadwozia.SelectedItem = null;
+                cb_rodzaj_nadwozia.SelectedText = "Rodzaj nadwozia";
+                btn_wyswietl_liste_Click(sender, e);
+            }
+            else
+            {
+                MessageBox.Show("Niepowodzenie", "Niepowodzenie");
+            }
+            
         }
     }
 }
