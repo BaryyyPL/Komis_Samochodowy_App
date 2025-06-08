@@ -283,7 +283,7 @@ namespace Komis_Samochodowy_App
             tb_filtruj_model.Clear();
             tb_filtruj_vin.Clear();
             tb_filtruj_kolor.Clear();
-            cb_uszkodzony.Checked = false;
+            cb_filtruj_nieuszkodzony.Checked = false;
             tb_minimalna_cena.Clear();
             tb_maksymalna_cena.Clear();
             tb_minimalna_moc.Clear();
