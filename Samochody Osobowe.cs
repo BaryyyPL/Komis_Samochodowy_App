@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -191,18 +192,38 @@ namespace Komis_Samochodowy_App
                 p.Zmiana_Ceny += pojazd =>
                 {
                     MessageBox.Show($"Cena pojazdu {pojazd.Marka} {pojazd.Model} zmieniona na: {pojazd.Cena} zł", "Zmiana ceny");
+
+                    Poinformuj_klientow();
                 };
 
                 p.Pojazd_Sprzedany += pojazd =>
                 {
                     MessageBox.Show($"Pojazdu {pojazd.Marka} {pojazd.Model} o VIN: {pojazd.Vin} został sprzedany do {pojazd.Wlasciciel.ToString()} za {pojazd.Cena} zł", "Sprzedaż");
+     
                 };
 
                 p.Dodano_Pojazd += pojazd =>
                 {
                     MessageBox.Show($"Dodano pojazd: {pojazd.ToString()}", "Dodano pojazd");
+
+                    Poinformuj_klientow();
                 };
             }
+        }
+
+        void Poinformuj_klientow()
+        {
+            string klienci_z_newsletterem = "";
+
+            foreach (var k in komis.klienci)
+            {
+                if (k.Newsletter)
+                {
+                    klienci_z_newsletterem += k.ToString() + "; \n";
+                }
+            }
+
+            MessageBox.Show($"Klienci, którzy zostali poinformowani: \n{klienci_z_newsletterem}", "Poinformowano klientów");
         }
 
         private void btn_dodaj_Click(object sender, EventArgs e)
