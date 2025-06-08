@@ -32,7 +32,7 @@ namespace Komis_Samochodowy_App
 
         private void btn_wyswietl_liste_Click(object sender, EventArgs e)
         {
-             if (rb_nazwisko_rosnaco.Checked)
+            if (rb_nazwisko_rosnaco.Checked)
             {
                 komis_klienci.Sortuj_Nazwisko_Rosnaco();
             }
@@ -84,7 +84,6 @@ namespace Komis_Samochodowy_App
         {
             if (komis_klienci.Zasubskrybuj_Newsletter_Po_Numerze_Telefonu(tb_zasub_numer_telefonu.Text, cb_zasub_newsletter.Checked))
             {
-                MessageBox.Show("Sukces", "Sukces");
                 cb_zasub_newsletter.Checked = false;
                 tb_zasub_numer_telefonu.Clear();
 
@@ -132,6 +131,24 @@ namespace Komis_Samochodowy_App
             }
 
             btn_wyswietl_liste_Click(sender, e);
+        }
+
+        private void Klienci_Load(object sender, EventArgs e)
+        {
+            btn_wyswietl_liste_Click(sender, e);
+
+            foreach (var k in komis_klienci.klienci)
+            {
+                k.Klient_Newsletter += klient =>
+                {
+                    MessageBox.Show($"Klient: {klient.Imie} {klient.Nazwisko} zmienił status swojego newslettera na: {(klient.Newsletter == true ? "Zasubskrybowany" : "Niezasubskrybowany")}", "Zmiana statusu newslettera");
+                };
+
+                k.Dodano_Osobe += klient =>
+                {
+                    MessageBox.Show($"Dodano nowego klienta {klient.ToString()}", "Dodano klienta");
+                };
+            }
         }
     }
 }

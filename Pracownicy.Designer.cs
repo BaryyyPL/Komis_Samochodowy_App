@@ -464,7 +464,7 @@
             Name = "Pracownicy";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Pracownicy";
-            Load += btn_wyswietl_liste_Click;
+            Load += Pracownicy_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             groupBox4.ResumeLayout(false);

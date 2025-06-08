@@ -388,7 +388,7 @@
             Name = "Klienci";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Klienci";
-            Load += btn_wyswietl_liste_Click;
+            Load += Klienci_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             groupBox4.ResumeLayout(false);

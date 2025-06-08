@@ -100,7 +100,6 @@ namespace Komis_Samochodowy_App
         {
             if (komis_pracownicy.Daj_Podwyzke_Po_Numerze_Telefonu(tb_podwyzka_numer_telefonu.Text, tb_podwyzka_kwota_podwyzki.Text))
             {
-                MessageBox.Show("Sukces", "Sukces");
                 tb_podwyzka_kwota_podwyzki.Clear();
                 tb_podwyzka_numer_telefonu.Clear();
 
@@ -154,6 +153,24 @@ namespace Komis_Samochodowy_App
             }
 
             btn_wyswietl_liste_Click(sender, e);
+        }
+
+        private void Pracownicy_Load(object sender, EventArgs e)
+        {
+            btn_wyswietl_liste_Click(sender, e);
+
+            foreach(var p in komis_pracownicy.pracownicy)
+            {
+                p.Podwyzka += pracownik =>
+                {
+                    MessageBox.Show($"Pracownik: {pracownik.Imie} {pracownik.Nazwisko} {pracownik.Stanowisko} dostał podwyżkę i zarabia teraz {pracownik.Pensja}", "Podwyżka");
+                };
+
+                p.Dodano_Osobe += pracownik =>
+                {
+                    MessageBox.Show($"Dodano nowego pracownika {pracownik.ToString()}", "Dodano pracownika");
+                };
+            }
         }
     }
 }
