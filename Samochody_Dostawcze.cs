@@ -105,15 +105,22 @@ namespace Komis_Samochodowy_App
 
         private void btn_zmien_cene_Click(object sender, EventArgs e)
         {
-            if (komis_dostawcze.Zmien_Cene_Pojazdu_Po_Vin(tb_zmien_vin.Text, tb_zmien_cena.Text))
+            try
             {
-                tb_zmien_cena.Clear();
-                tb_zmien_vin.Clear();
-                btn_wyswietl_liste_Click(sender, e);
+                if (komis_dostawcze.Zmien_Cene_Pojazdu_Po_Vin(tb_zmien_vin.Text, tb_zmien_cena.Text))
+                {
+                    tb_zmien_cena.Clear();
+                    tb_zmien_vin.Clear();
+                    btn_wyswietl_liste_Click(sender, e);
+                }
+                else
+                {
+                    MessageBox.Show("Niepowodzenie", "Niepowodzenie");
+                }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Niepowodzenie", "Niepowodzenie");
+                MessageBox.Show($"Błąd: {ex.Message}", "Błąd");
             }
         }
 
@@ -121,7 +128,7 @@ namespace Komis_Samochodowy_App
         {
             Klient klient = cb_sprzedaj_klient.SelectedItem as Klient;
 
-            if (klient != null)
+            try
             {
                 if (komis_dostawcze.Sprzedaj_Pojazd_Po_Vin(tb_sprzedaj_vin.Text, klient))
                 {
@@ -134,9 +141,9 @@ namespace Komis_Samochodowy_App
                     MessageBox.Show("Niepowodzenie", "Niepowodzenie");
                 }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Niepowodzenie", "Niepowodzenie");
+                MessageBox.Show($"Błąd: {ex.Message}", "Błąd");
             }
         }
 
@@ -268,41 +275,47 @@ namespace Komis_Samochodowy_App
                 return;
             }
 
-            if (komis_dostawcze.Dodaj_Samochod_Dostawczy(tb_marka.Text, tb_model.Text, tb_cena.Text,
-               tb_rok_produkcji.Text, tb_przebieg.Text, rodzaj_paliwa, tb_vin.Text, !cb_uszkodzony.Checked,
-               tb_pojemnosc_silnika.Text, tb_moc.Text, skrzynia_biegow, kraj_pochodzenia, rodzaj_napedu,
-               tb_kolor.Text, tb_ladownosc.Text, tb_liczba_drzwi_bocznych.Text, rodzaj_zabudowy))
+            try
             {
-                tb_marka.Clear();
-                tb_model.Clear();
-                tb_cena.Clear();
-                tb_rok_produkcji.Clear();
-                tb_przebieg.Clear();
-                tb_vin.Clear();
-                cb_rodzaj_paliwa.SelectedItem = null;
-                cb_rodzaj_paliwa.Text = "Rodzaj paliwa";
-                cb_uszkodzony.Checked = false;
-                tb_pojemnosc_silnika.Clear();
-                tb_moc.Clear();
-                tb_kolor.Clear();
-                cb_skrzynia_biegow.SelectedItem = null;
-                cb_skrzynia_biegow.Text = "Skrzynia biegow";
-                cb_kraj_pochodzenia.SelectedItem = null;
-                cb_kraj_pochodzenia.Text = "Kraj pochodzenia";
-                cb_rodzaj_napedu.SelectedItem = null;
-                cb_rodzaj_napedu.Text = "Rodzaj napedu";
-                cb_filtruj_rodzaj_zabudowy.SelectedItem = null;
-                cb_filtruj_rodzaj_zabudowy.Text = "Rodzaj zabudowy";
-                tb_liczba_drzwi_bocznych.Clear();
-                tb_ladownosc.Clear();
-                btn_filtruj_resetuj_Click(sender, e);
-                btn_wyswietl_liste_Click(sender, e);
+                if (komis_dostawcze.Dodaj_Samochod_Dostawczy(tb_marka.Text, tb_model.Text, tb_cena.Text,
+                   tb_rok_produkcji.Text, tb_przebieg.Text, rodzaj_paliwa, tb_vin.Text, !cb_uszkodzony.Checked,
+                   tb_pojemnosc_silnika.Text, tb_moc.Text, skrzynia_biegow, kraj_pochodzenia, rodzaj_napedu,
+                   tb_kolor.Text, tb_ladownosc.Text, tb_liczba_drzwi_bocznych.Text, rodzaj_zabudowy))
+                {
+                    tb_marka.Clear();
+                    tb_model.Clear();
+                    tb_cena.Clear();
+                    tb_rok_produkcji.Clear();
+                    tb_przebieg.Clear();
+                    tb_vin.Clear();
+                    cb_rodzaj_paliwa.SelectedItem = null;
+                    cb_rodzaj_paliwa.Text = "Rodzaj paliwa";
+                    cb_uszkodzony.Checked = false;
+                    tb_pojemnosc_silnika.Clear();
+                    tb_moc.Clear();
+                    tb_kolor.Clear();
+                    cb_skrzynia_biegow.SelectedItem = null;
+                    cb_skrzynia_biegow.Text = "Skrzynia biegow";
+                    cb_kraj_pochodzenia.SelectedItem = null;
+                    cb_kraj_pochodzenia.Text = "Kraj pochodzenia";
+                    cb_rodzaj_napedu.SelectedItem = null;
+                    cb_rodzaj_napedu.Text = "Rodzaj napedu";
+                    cb_filtruj_rodzaj_zabudowy.SelectedItem = null;
+                    cb_filtruj_rodzaj_zabudowy.Text = "Rodzaj zabudowy";
+                    tb_liczba_drzwi_bocznych.Clear();
+                    tb_ladownosc.Clear();
+                    btn_filtruj_resetuj_Click(sender, e);
+                    btn_wyswietl_liste_Click(sender, e);
+                }
+                else
+                {
+                    MessageBox.Show("Niepowodzenie", "Niepowodzenie");
+                }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Niepowodzenie", "Niepowodzenie");
+                MessageBox.Show($"Błąd: {ex.Message}", "Błąd");
             }
-
         }
 
         private void btn_filtruj_resetuj_Click(object sender, EventArgs e)
@@ -356,82 +369,89 @@ namespace Komis_Samochodowy_App
 
         private void btn_filtruj_zastosuj_Click(object sender, EventArgs e)
         {
-            if (cb_filtruj_rodzaj_paliwa.SelectedItem != null)
+            try
             {
-                komis_dostawcze.Filtruj_Paliwo((Rodzaj_paliwa)cb_filtruj_rodzaj_paliwa.SelectedItem);
+                if (cb_filtruj_rodzaj_paliwa.SelectedItem != null)
+                {
+                    komis_dostawcze.Filtruj_Paliwo((Rodzaj_paliwa)cb_filtruj_rodzaj_paliwa.SelectedItem);
+                }
+                if (cb_filtruj_rodzaj_zabudowy.SelectedItem != null)
+                {
+                    komis_dostawcze.Filtruj_Zabudowa((Rodzaj_zabudowy)cb_filtruj_rodzaj_zabudowy.SelectedItem);
+                }
+                if (cb_filtruj_rodzaj_napedu.SelectedItem != null)
+                {
+                    komis_dostawcze.Filtruj_Naped((Rodzaj_napedu)cb_filtruj_rodzaj_napedu.SelectedItem);
+                }
+                if (cb_filtruj_skrzynia_biegow.SelectedItem != null)
+                {
+                    komis_dostawcze.Filtruj_Skrzynia((Skrzynia_biegow)cb_filtruj_skrzynia_biegow.SelectedItem);
+                }
+                if (cb_filtruj_kraj_pochodzenia.SelectedItem != null)
+                {
+                    komis_dostawcze.Filtruj_Kraj((Kraj_pochodzenia)cb_filtruj_kraj_pochodzenia.SelectedItem);
+                }
+                if (cb_filtruj_wlasciciel.SelectedItem != null)
+                {
+                    cb_filtruj_sprzedany.SelectedIndex = 0;
+                    komis_dostawcze.Filtruj_Wlasciciel((Klient)cb_filtruj_wlasciciel.SelectedItem);
+                }
+                if (cb_filtruj_sprzedany.SelectedItem != null)
+                {
+                    komis_dostawcze.Filtruj_Sprzedany(cb_filtruj_sprzedany.SelectedIndex == 0 ? true : false);
+                }
+                if (cb_filtruj_nieuszkodzony.Checked)
+                {
+                    komis_dostawcze.Filtruj_Nieuszkodzony();
+                }
+                if (tb_filtruj_marka.Text.Length > 0)
+                {
+                    komis_dostawcze.Filtruj_Marka(tb_filtruj_marka.Text);
+                }
+                if (tb_filtruj_model.Text.Length > 0)
+                {
+                    komis_dostawcze.Filtruj_Model(tb_filtruj_model.Text);
+                }
+                if (tb_filtruj_vin.Text.Length > 0)
+                {
+                    komis_dostawcze.Filtruj_VIN(tb_filtruj_vin.Text);
+                }
+                if (tb_filtruj_kolor.Text.Length > 0)
+                {
+                    komis_dostawcze.Filtruj_Kolor(tb_filtruj_kolor.Text);
+                }
+                if (tb_minimalna_cena.Text.Length > 0 || tb_maksymalna_cena.Text.Length > 0)
+                {
+                    komis_dostawcze.Filtruj_Cena(tb_minimalna_cena.Text, tb_maksymalna_cena.Text);
+                }
+                if (tb_minimalna_moc.Text.Length > 0 || tb_maksymalna_moc.Text.Length > 0)
+                {
+                    komis_dostawcze.Filtruj_Moc(tb_minimalna_moc.Text, tb_maksymalna_moc.Text);
+                }
+                if (tb_minimalna_pojemnosc.Text.Length > 0 || tb_maksymalna_pojemnosc.Text.Length > 0)
+                {
+                    komis_dostawcze.Filtruj_Pojemnosc(tb_minimalna_pojemnosc.Text, tb_maksymalna_pojemnosc.Text);
+                }
+                if (tb_minimalny_przebieg.Text.Length > 0 || tb_maksymalny_przebieg.Text.Length > 0)
+                {
+                    komis_dostawcze.Filtruj_Przebieg(tb_minimalny_przebieg.Text, tb_maksymalny_przebieg.Text);
+                }
+                if (tb_minimalny_rok.Text.Length > 0 || tb_maksymalny_rok.Text.Length > 0)
+                {
+                    komis_dostawcze.Filtruj_Rok(tb_minimalny_rok.Text, tb_maksymalny_rok.Text);
+                }
+                if (tb_filtruj_minimalna_ladownosc.Text.Length > 0 || tb_filtruj_maksymalna_ladownosc.Text.Length > 0)
+                {
+                    komis_dostawcze.Filtruj_Ladownosc(tb_filtruj_minimalna_ladownosc.Text, tb_filtruj_maksymalna_ladownosc.Text);
+                }
+                if (tb_filtruj_minimalna_liczba_drzwi_bocznych.Text.Length > 0 || tb_filtruj_maksymalna_liczba_drzwi_bocznych.Text.Length > 0)
+                {
+                    komis_dostawcze.Filtruj_Drzwi(tb_filtruj_minimalna_liczba_drzwi_bocznych.Text, tb_filtruj_maksymalna_liczba_drzwi_bocznych.Text);
+                }
             }
-            if (cb_filtruj_rodzaj_zabudowy.SelectedItem != null)
+            catch (Exception ex)
             {
-                komis_dostawcze.Filtruj_Zabudowa((Rodzaj_zabudowy)cb_filtruj_rodzaj_zabudowy.SelectedItem);
-            }
-            if (cb_filtruj_rodzaj_napedu.SelectedItem != null)
-            {
-                komis_dostawcze.Filtruj_Naped((Rodzaj_napedu)cb_filtruj_rodzaj_napedu.SelectedItem);
-            }
-            if (cb_filtruj_skrzynia_biegow.SelectedItem != null)
-            {
-                komis_dostawcze.Filtruj_Skrzynia((Skrzynia_biegow)cb_filtruj_skrzynia_biegow.SelectedItem);
-            }
-            if (cb_filtruj_kraj_pochodzenia.SelectedItem != null)
-            {
-                komis_dostawcze.Filtruj_Kraj((Kraj_pochodzenia)cb_filtruj_kraj_pochodzenia.SelectedItem);
-            }
-            if (cb_filtruj_wlasciciel.SelectedItem != null)
-            {
-                cb_filtruj_sprzedany.SelectedIndex = 0;
-                komis_dostawcze.Filtruj_Wlasciciel((Klient)cb_filtruj_wlasciciel.SelectedItem);
-            }
-            if (cb_filtruj_sprzedany.SelectedItem != null)
-            {
-                komis_dostawcze.Filtruj_Sprzedany(cb_filtruj_sprzedany.SelectedIndex == 0 ? true : false);
-            }
-            if (cb_filtruj_nieuszkodzony.Checked)
-            {
-                komis_dostawcze.Filtruj_Nieuszkodzony();
-            }
-            if (tb_filtruj_marka.Text.Length > 0)
-            {
-                komis_dostawcze.Filtruj_Marka(tb_filtruj_marka.Text);
-            }
-            if (tb_filtruj_model.Text.Length > 0)
-            {
-                komis_dostawcze.Filtruj_Model(tb_filtruj_model.Text);
-            }
-            if (tb_filtruj_vin.Text.Length > 0)
-            {
-                komis_dostawcze.Filtruj_VIN(tb_filtruj_vin.Text);
-            }
-            if (tb_filtruj_kolor.Text.Length > 0)
-            {
-                komis_dostawcze.Filtruj_Kolor(tb_filtruj_kolor.Text);
-            }
-            if (tb_minimalna_cena.Text.Length > 0 || tb_maksymalna_cena.Text.Length > 0)
-            {
-                komis_dostawcze.Filtruj_Cena(tb_minimalna_cena.Text, tb_maksymalna_cena.Text);
-            }
-            if (tb_minimalna_moc.Text.Length > 0 || tb_maksymalna_moc.Text.Length > 0)
-            {
-                komis_dostawcze.Filtruj_Moc(tb_minimalna_moc.Text, tb_maksymalna_moc.Text);
-            }
-            if (tb_minimalna_pojemnosc.Text.Length > 0 || tb_maksymalna_pojemnosc.Text.Length > 0)
-            {
-                komis_dostawcze.Filtruj_Pojemnosc(tb_minimalna_pojemnosc.Text, tb_maksymalna_pojemnosc.Text);
-            }
-            if (tb_minimalny_przebieg.Text.Length > 0 || tb_maksymalny_przebieg.Text.Length > 0)
-            {
-                komis_dostawcze.Filtruj_Przebieg(tb_minimalny_przebieg.Text, tb_maksymalny_przebieg.Text);
-            }
-            if (tb_minimalny_rok.Text.Length > 0 || tb_maksymalny_rok.Text.Length > 0)
-            {
-                komis_dostawcze.Filtruj_Rok(tb_minimalny_rok.Text, tb_maksymalny_rok.Text);
-            }
-            if (tb_filtruj_minimalna_ladownosc.Text.Length > 0 || tb_filtruj_maksymalna_ladownosc.Text.Length > 0)
-            {
-                komis_dostawcze.Filtruj_Ladownosc(tb_filtruj_minimalna_ladownosc.Text, tb_filtruj_maksymalna_ladownosc.Text);
-            }
-            if (tb_filtruj_minimalna_liczba_drzwi_bocznych.Text.Length > 0 || tb_filtruj_maksymalna_liczba_drzwi_bocznych.Text.Length > 0)
-            {
-                komis_dostawcze.Filtruj_Drzwi(tb_filtruj_minimalna_liczba_drzwi_bocznych.Text, tb_filtruj_maksymalna_liczba_drzwi_bocznych.Text);
+                MessageBox.Show($"Błąd: {ex.Message}", "Błąd");
             }
 
             btn_wyswietl_liste_Click(sender, e);

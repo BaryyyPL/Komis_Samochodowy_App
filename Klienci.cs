@@ -91,16 +91,23 @@ namespace Komis_Samochodowy_App
 
         private void btn_zasub_newsletter_Click(object sender, EventArgs e)
         {
-            if (komis_klienci.Zasubskrybuj_Newsletter_Po_Numerze_Telefonu(tb_zasub_numer_telefonu.Text, cb_zasub_newsletter.Checked))
+            try
             {
-                cb_zasub_newsletter.Checked = false;
-                tb_zasub_numer_telefonu.Clear();
+                if (komis_klienci.Zasubskrybuj_Newsletter_Po_Numerze_Telefonu(tb_zasub_numer_telefonu.Text, cb_zasub_newsletter.Checked))
+                {
+                    cb_zasub_newsletter.Checked = false;
+                    tb_zasub_numer_telefonu.Clear();
 
-                btn_wyswietl_liste_Click(sender, e);
+                    btn_wyswietl_liste_Click(sender, e);
+                }
+                else
+                {
+                    MessageBox.Show("Niepowodzenie", "Niepowodzenia");
+                }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Niepowodzenie", "Niepowodzenia");
+                MessageBox.Show($"Błąd: {ex.Message}", "Błąd");
             }
         }
 
@@ -118,25 +125,32 @@ namespace Komis_Samochodowy_App
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (tb_filtruj_nazwisko.Text.Length > 0)
+            try
             {
-                komis_klienci.Filtruj_Nazwisko(tb_filtruj_nazwisko.Text);
+                if (tb_filtruj_nazwisko.Text.Length > 0)
+                {
+                    komis_klienci.Filtruj_Nazwisko(tb_filtruj_nazwisko.Text);
+                }
+                if (tb_filtruj_imie.Text.Length > 0)
+                {
+                    komis_klienci.Filtruj_Imie(tb_filtruj_imie.Text);
+                }
+                if (tb_filtruj_numer_telefonu.Text.Length > 0)
+                {
+                    komis_klienci.Filtruj_Numer_Telefonu(tb_filtruj_numer_telefonu.Text);
+                }
+                if (tb_filtruj_email.Text.Length > 0)
+                {
+                    komis_klienci.Filtruj_Email(tb_filtruj_email.Text);
+                }
+                if (cb_filtruj_newsletter.Checked == true)
+                {
+                    komis_klienci.Filtruj_Newsletter();
+                }
             }
-            if (tb_filtruj_imie.Text.Length > 0)
+            catch (Exception ex)
             {
-                komis_klienci.Filtruj_Imie(tb_filtruj_imie.Text);
-            }
-            if (tb_filtruj_numer_telefonu.Text.Length > 0)
-            {
-                komis_klienci.Filtruj_Numer_Telefonu(tb_filtruj_numer_telefonu.Text);
-            }
-            if (tb_filtruj_email.Text.Length > 0)
-            {
-                komis_klienci.Filtruj_Email(tb_filtruj_email.Text);
-            }
-            if (cb_filtruj_newsletter.Checked == true)
-            {
-                komis_klienci.Filtruj_Newsletter();
+                MessageBox.Show($"Błąd: {ex.Message}", "Błąd");
             }
 
             btn_wyswietl_liste_Click(sender, e);

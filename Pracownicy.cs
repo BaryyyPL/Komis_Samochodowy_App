@@ -112,16 +112,23 @@ namespace Komis_Samochodowy_App
 
         private void btn_daj_podwyzke_Click(object sender, EventArgs e)
         {
-            if (komis_pracownicy.Daj_Podwyzke_Po_Numerze_Telefonu(tb_podwyzka_numer_telefonu.Text, tb_podwyzka_kwota_podwyzki.Text))
+            try
             {
-                tb_podwyzka_kwota_podwyzki.Clear();
-                tb_podwyzka_numer_telefonu.Clear();
+                if (komis_pracownicy.Daj_Podwyzke_Po_Numerze_Telefonu(tb_podwyzka_numer_telefonu.Text, tb_podwyzka_kwota_podwyzki.Text))
+                {
+                    tb_podwyzka_kwota_podwyzki.Clear();
+                    tb_podwyzka_numer_telefonu.Clear();
 
-                btn_wyswietl_liste_Click(sender, e);
+                    btn_wyswietl_liste_Click(sender, e);
+                }
+                else
+                {
+                    MessageBox.Show("Niepowodzenie", "Niepowodzenia");
+                }
             }
-            else
+            catch(Exception ex)
             {
-                MessageBox.Show("Niepowodzenie", "Niepowodzenia");
+                MessageBox.Show($"Błąd: {ex.Message}", "Błąd");
             }
         }
 
@@ -141,29 +148,36 @@ namespace Komis_Samochodowy_App
 
         private void btn_zastosuj_filtry_Click(object sender, EventArgs e)
         {
-            if (tb_filtruj_nazwisko.Text.Length > 0)
+            try
             {
-                komis_pracownicy.Filtruj_Nazwisko(tb_filtruj_nazwisko.Text);
+                if (tb_filtruj_nazwisko.Text.Length > 0)
+                {
+                    komis_pracownicy.Filtruj_Nazwisko(tb_filtruj_nazwisko.Text);
+                }
+                if (tb_filtruj_imie.Text.Length > 0)
+                {
+                    komis_pracownicy.Filtruj_Imie(tb_filtruj_imie.Text);
+                }
+                if (tb_filtruj_numer_telefonu.Text.Length > 0)
+                {
+                    komis_pracownicy.Filtruj_Numer_Telefonu(tb_filtruj_numer_telefonu.Text);
+                }
+                if (tb_filtruj_email.Text.Length > 0)
+                {
+                    komis_pracownicy.Filtruj_Email(tb_filtruj_email.Text);
+                }
+                if (tb_filtruj_stanowisko.Text.Length > 0)
+                {
+                    komis_pracownicy.Filtruj_Stanowisko(tb_filtruj_stanowisko.Text);
+                }
+                if (tb_filtruj_pensja_minimalna.Text.Length > 0 || tb_filtruj_pensja_maksymalna.Text.Length > 0)
+                {
+                    komis_pracownicy.Filtruj_Pensja(tb_filtruj_pensja_minimalna.Text, tb_filtruj_pensja_maksymalna.Text);
+                }
             }
-            if (tb_filtruj_imie.Text.Length > 0)
+            catch (Exception ex)
             {
-                komis_pracownicy.Filtruj_Imie(tb_filtruj_imie.Text);
-            }
-            if (tb_filtruj_numer_telefonu.Text.Length > 0)
-            {
-                komis_pracownicy.Filtruj_Numer_Telefonu(tb_filtruj_numer_telefonu.Text);
-            }
-            if (tb_filtruj_email.Text.Length > 0)
-            {
-                komis_pracownicy.Filtruj_Email(tb_filtruj_email.Text);
-            }
-            if (tb_filtruj_stanowisko.Text.Length > 0)
-            {
-                komis_pracownicy.Filtruj_Stanowisko(tb_filtruj_stanowisko.Text);
-            }
-            if (tb_filtruj_pensja_minimalna.Text.Length > 0 || tb_filtruj_pensja_maksymalna.Text.Length > 0)
-            {
-                komis_pracownicy.Filtruj_Pensja(tb_filtruj_pensja_minimalna.Text, tb_filtruj_pensja_maksymalna.Text);
+                MessageBox.Show($"Błąd: {ex.Message}", "Błąd");
             }
 
             btn_wyswietl_liste_Click(sender, e);
