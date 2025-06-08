@@ -240,7 +240,17 @@ namespace Komis_Samochodowy_App
                     cb_rodzaj_nadwozia.SelectedItem == null ||
                     cb_rodzaj_napedu.SelectedItem == null ||
                     cb_skrzynia_biegow.SelectedItem == null ||
-                    cb_kraj_pochodzenia.SelectedItem == null)
+                    cb_kraj_pochodzenia.SelectedItem == null ||
+                    string.IsNullOrWhiteSpace(tb_marka.Text) ||
+                    string.IsNullOrWhiteSpace(tb_model.Text) ||
+                    string.IsNullOrWhiteSpace(tb_cena.Text) ||
+                    string.IsNullOrWhiteSpace(tb_rok_produkcji.Text) ||
+                    string.IsNullOrWhiteSpace(tb_przebieg.Text) ||
+                    string.IsNullOrWhiteSpace(tb_vin.Text) ||
+                    string.IsNullOrWhiteSpace(tb_pojemnosc_silnika.Text) ||
+                    string.IsNullOrWhiteSpace(tb_moc.Text) ||
+                    string.IsNullOrWhiteSpace(tb_kolor.Text)
+                )
                 {
                     throw new Exception("Nie wszystkie pola zostały wybrane.");
                 }
@@ -262,7 +272,6 @@ namespace Komis_Samochodowy_App
                tb_pojemnosc_silnika.Text, tb_moc.Text, skrzynia_biegow, kraj_pochodzenia, rodzaj_napedu,
                tb_kolor.Text, rodzaj_nadwozia))
             {
-                MessageBox.Show("Dodano samochód", "Sukces");
                 tb_marka.Clear();
                 tb_model.Clear();
                 tb_cena.Clear();

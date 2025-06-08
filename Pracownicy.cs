@@ -78,22 +78,36 @@ namespace Komis_Samochodowy_App
 
         private void btn_dodaj_pracownika_Click(object sender, EventArgs e)
         {
-            if (komis_pracownicy.Dodaj_Pracownika(tb_imie.Text, tb_nazwisko.Text, tb_numer_telefonu.Text, tb_email.Text, tb_stanowisko.Text, tb_pensja.Text))
+            try
             {
-                MessageBox.Show("Dodano pracownika", "Sukces");
-                tb_imie.Clear();
-                tb_nazwisko.Clear();
-                tb_email.Clear();
-                tb_numer_telefonu.Clear();
-                tb_stanowisko.Clear();
-                tb_pensja.Clear();
+                if (!string.IsNullOrWhiteSpace(tb_imie.Text) &&
+                    !string.IsNullOrWhiteSpace(tb_nazwisko.Text) &&
+                    !string.IsNullOrWhiteSpace(tb_numer_telefonu.Text) &&
+                    !string.IsNullOrWhiteSpace(tb_email.Text) &&
+                    !string.IsNullOrWhiteSpace(tb_stanowisko.Text) &&
+                    !string.IsNullOrWhiteSpace(tb_pensja.Text) &&
+                    komis_pracownicy.Dodaj_Pracownika(tb_imie.Text, tb_nazwisko.Text,
+                        tb_numer_telefonu.Text, tb_email.Text, tb_stanowisko.Text, tb_pensja.Text))
+                {
+                    tb_imie.Clear();
+                    tb_nazwisko.Clear();
+                    tb_email.Clear();
+                    tb_numer_telefonu.Clear();
+                    tb_stanowisko.Clear();
+                    tb_pensja.Clear();
 
-                btn_wyswietl_liste_Click(sender, e);
+                    btn_wyswietl_liste_Click(sender, e);
+                }
+                else
+                {
+                    MessageBox.Show("Proszę uzupełnić wszystkie dane pracownika", "Brakujące dane");
+                }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Brakujące dane pracownika", "Niepowodzenia");
+                MessageBox.Show($"Wystąpił błąd podczas dodawania pracownika: {ex.Message}", "Błąd");
             }
+
         }
 
         private void btn_daj_podwyzke_Click(object sender, EventArgs e)

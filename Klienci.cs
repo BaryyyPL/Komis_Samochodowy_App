@@ -62,22 +62,31 @@ namespace Komis_Samochodowy_App
 
         private void btn_dodaj_klienta_Click(object sender, EventArgs e)
         {
-            if (komis_klienci.Dodaj_Klienta(tb_imie.Text, tb_nazwisko.Text, tb_numer_telefonu.Text, tb_email.Text, cb_newsletter.Checked))
+            try
             {
-                MessageBox.Show("Dodano klienta", "Sukces");
-                tb_imie.Clear();
-                tb_nazwisko.Clear();
-                tb_email.Clear();
-                cb_newsletter.Checked = false;
-                tb_numer_telefonu.Clear();
+                if (!string.IsNullOrWhiteSpace(tb_imie.Text) &&
+                    !string.IsNullOrWhiteSpace(tb_nazwisko.Text) &&
+                    !string.IsNullOrWhiteSpace(tb_numer_telefonu.Text) &&
+                    !string.IsNullOrWhiteSpace(tb_email.Text) &&
+                    komis_klienci.Dodaj_Klienta(tb_imie.Text, tb_nazwisko.Text, tb_numer_telefonu.Text, tb_email.Text, cb_newsletter.Checked))
+                {
+                    tb_imie.Clear();
+                    tb_nazwisko.Clear();
+                    tb_email.Clear();
+                    cb_newsletter.Checked = false;
+                    tb_numer_telefonu.Clear();
 
-                btn_wyswietl_liste_Click(sender, e);
+                    btn_wyswietl_liste_Click(sender, e);
+                }
+                else
+                {
+                    MessageBox.Show("Proszę uzupełnić wszystkie dane klienta", "Brakujące dane");
+                }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Brakujące dane klienta", "Niepowodzenia");
+                MessageBox.Show($"Błąd podczas dodawania klienta: {ex.Message}", "Błąd");
             }
-
         }
 
         private void btn_zasub_newsletter_Click(object sender, EventArgs e)
