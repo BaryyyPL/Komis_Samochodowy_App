@@ -148,7 +148,7 @@ namespace Komis_Samochodowy_App
             cb_sprzedaj_klient.SelectedText = "Klient";
 
             cb_rodzaj_paliwa.DataSource = Enum.GetValues(typeof(Rodzaj_paliwa));
-            cb_sprzedaj_klient.SelectedItem = null;
+            cb_rodzaj_paliwa.SelectedItem = null;
             cb_rodzaj_paliwa.SelectedText = "Rodzaj paliwa";
             cb_rodzaj_nadwozia.DataSource = Enum.GetValues(typeof(Rodzaj_nadwozia));
             cb_rodzaj_nadwozia.SelectedItem = null;
@@ -246,6 +246,7 @@ namespace Komis_Samochodowy_App
                 cb_rodzaj_napedu.SelectedText = "Rodzaj napedu";
                 cb_rodzaj_nadwozia.SelectedItem = null;
                 cb_rodzaj_nadwozia.SelectedText = "Rodzaj nadwozia";
+                btn_filtruj_resetuj_Click(sender, e);
                 btn_wyswietl_liste_Click(sender, e);
             }
             else
