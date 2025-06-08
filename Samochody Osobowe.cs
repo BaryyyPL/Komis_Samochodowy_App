@@ -106,7 +106,6 @@ namespace Komis_Samochodowy_App
         {
             if (komis_osobowe.Zmien_Cene_Pojazdu_Po_Vin(tb_zmien_vin.Text, tb_zmien_cena.Text))
             {
-                MessageBox.Show($"Zmieniono cenę pojazdu o Vin: {tb_zmien_vin.Text}", "Sukces");
                 tb_zmien_cena.Clear();
                 tb_zmien_vin.Clear();
                 btn_wyswietl_liste_Click(sender, e);
@@ -125,7 +124,6 @@ namespace Komis_Samochodowy_App
             {
                 if (komis_osobowe.Sprzedaj_Pojazd_Po_Vin(tb_sprzedaj_vin.Text, klient))
                 {
-                    MessageBox.Show($"Sprzedano pojazd o Vin: {tb_sprzedaj_vin.Text}", "Sukces");
                     cb_sprzedaj_klient.SelectedItem = null;
                     tb_sprzedaj_vin.Clear();
                     btn_wyswietl_liste_Click(sender, e);
@@ -187,6 +185,24 @@ namespace Komis_Samochodowy_App
             cb_filtruj_sprzedany.SelectedText = "Sprzedany";
 
             btn_wyswietl_liste_Click(sender, e);
+
+            foreach (var p in komis_osobowe.samochody_osobowe)
+            {
+                p.Zmiana_Ceny += pojazd =>
+                {
+                    MessageBox.Show($"Cena pojazdu {pojazd.Marka} {pojazd.Model} zmieniona na: {pojazd.Cena} zł", "Zmiana ceny");
+                };
+
+                p.Pojazd_Sprzedany += pojazd =>
+                {
+                    MessageBox.Show($"Pojazdu {pojazd.Marka} {pojazd.Model} o VIN: {pojazd.Vin} został sprzedany do {pojazd.Wlasciciel.ToString()} za {pojazd.Cena} zł", "Sprzedaż");
+                };
+
+                p.Dodano_Pojazd += pojazd =>
+                {
+                    MessageBox.Show($"Dodano pojazd: {pojazd.ToString()}", "Dodano pojazd");
+                };
+            }
         }
 
         private void btn_dodaj_Click(object sender, EventArgs e)
