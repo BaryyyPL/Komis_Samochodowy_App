@@ -132,8 +132,6 @@ namespace Komis_Samochodowy_App
             }
 
             btn_wyswietl_liste_Click(sender, e);
-
-            komis_klienci.Resetuj_Filtry();
         }
     }
 }

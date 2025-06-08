@@ -181,6 +181,10 @@ namespace Komis_Samochodowy_App
             cb_filtruj_wlasciciel.DataSource = komis.klienci.ToList();
             cb_filtruj_wlasciciel.SelectedItem = null;
             cb_filtruj_wlasciciel.SelectedText = "Wlasciciel";
+            cb_filtruj_sprzedany.Items.Add("Tak");
+            cb_filtruj_sprzedany.Items.Add("Nie");
+            cb_filtruj_sprzedany.SelectedItem = null;
+            cb_filtruj_sprzedany.SelectedText = "Sprzedany";
 
             btn_wyswietl_liste_Click(sender, e);
         }
@@ -259,6 +263,7 @@ namespace Komis_Samochodowy_App
             cb_filtruj_skrzynia_biegow.Text = null;
             cb_filtruj_kraj_pochodzenia.Text = null;
             cb_filtruj_wlasciciel.Text = null;
+            cb_filtruj_sprzedany.Text = null;
 
             cb_filtruj_rodzaj_paliwa.SelectedItem = null;
             cb_filtruj_rodzaj_paliwa.SelectedText = "Rodzaj paliwa";                   
@@ -272,12 +277,13 @@ namespace Komis_Samochodowy_App
             cb_filtruj_kraj_pochodzenia.SelectedText = "Kraj pochodzenia";
             cb_filtruj_wlasciciel.SelectedItem = null;
             cb_filtruj_wlasciciel.SelectedText = "Wlasciciel";
+            cb_filtruj_sprzedany.SelectedItem = null;
+            cb_filtruj_sprzedany.SelectedText = "Sprzedany";
             tb_filtruj_marka.Clear();
             tb_filtruj_model.Clear();
             tb_filtruj_vin.Clear();
             tb_filtruj_kolor.Clear();
             cb_uszkodzony.Checked = false;
-            cb_filtruj_sprzedany.Checked = false;
             tb_minimalna_cena.Clear();
             tb_maksymalna_cena.Clear();
             tb_minimalna_moc.Clear();
@@ -318,7 +324,12 @@ namespace Komis_Samochodowy_App
             }
             if (cb_filtruj_wlasciciel.SelectedItem != null)
             {
+                cb_filtruj_sprzedany.SelectedIndex = 0;
                 komis_osobowe.Filtruj_Wlasciciel((Klient)cb_filtruj_wlasciciel.SelectedItem);
+            }
+            if (cb_filtruj_sprzedany.SelectedItem != null)
+            {
+                komis_osobowe.Filtruj_Sprzedany(cb_filtruj_sprzedany.SelectedIndex == 0 ? true : false);
             }
             if (cb_filtruj_nieuszkodzony.Checked)
             {
@@ -361,11 +372,7 @@ namespace Komis_Samochodowy_App
                 komis_osobowe.Filtruj_Rok(tb_minimalny_rok.Text, tb_maksymalny_rok.Text);
             }
 
-            komis_osobowe.Filtruj_Sprzedany(cb_filtruj_sprzedany.Checked);
-
             btn_wyswietl_liste_Click(sender, e);
-
-            komis_osobowe.Resetuj_Filtry();
         }
     }
 }
