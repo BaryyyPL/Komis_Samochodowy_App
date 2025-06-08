@@ -34,7 +34,7 @@ namespace Komis_Samochodowy_App
         {
             if (!cb_filtruj_malejaco.Checked)
             {
-                if (rb_filtruj_cena.Checked) 
+                if (rb_filtruj_cena.Checked)
                 {
                     komis_osobowe.Sortuj_Cena_Rosnaco();
                 }
@@ -80,7 +80,7 @@ namespace Komis_Samochodowy_App
             }
 
 
-                var lista = komis_osobowe.Lista_Wszystkich_Samochodow_Osobowych();
+            var lista = komis_osobowe.Lista_Wszystkich_Samochodow_Osobowych();
             data_samochody_osobowe.DataSource = lista.ToList();
 
             data_samochody_osobowe.Columns["Marka"].DisplayIndex = 0;
@@ -100,6 +100,21 @@ namespace Komis_Samochodowy_App
             data_samochody_osobowe.Columns["Nieuszkodzony"].DisplayIndex = 14;
             data_samochody_osobowe.Columns["Sprzedany"].DisplayIndex = 15;
             data_samochody_osobowe.Columns["Wlasciciel"].DisplayIndex = 16;
+        }
+
+        private void btn_zmien_cene_Click(object sender, EventArgs e)
+        {
+            if(komis_osobowe.Zmien_Cene_Pojazdu_Po_Vin(tb_zmien_vin.Text, tb_zmien_cena.Text))
+            {
+                MessageBox.Show($"Zmieniono cenę pojazdu o Vin: {tb_zmien_vin.Text}", "Sukces");
+                tb_zmien_cena.Clear();
+                tb_zmien_vin.Clear();
+                btn_wyswietl_liste_Click(sender, e);
+            }
+            else
+            {
+                MessageBox.Show("Niepowodzenie", "Niepowodzenie");
+            }
         }
     }
 }

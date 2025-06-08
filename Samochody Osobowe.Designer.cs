@@ -232,6 +232,7 @@
             btn_zmien_cene.TabIndex = 2;
             btn_zmien_cene.Text = "Zmień cenę";
             btn_zmien_cene.UseVisualStyleBackColor = true;
+            btn_zmien_cene.Click += btn_zmien_cene_Click;
             // 
             // tb_zmien_vin
             // 
