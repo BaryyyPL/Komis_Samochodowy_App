@@ -44,7 +44,7 @@ namespace Komis_Samochodowy_App
                 }
                 if (rb_filtruj_moc.Checked)
                 {
-                    komis_dostawcze.Sortuj_Cena_Rosnaco();
+                    komis_dostawcze.Sortuj_Moc_Rosnaco();
                 }
                 if (rb_filtruj_przebieg.Checked)
                 {
@@ -67,7 +67,7 @@ namespace Komis_Samochodowy_App
                 }
                 if (rb_filtruj_moc.Checked)
                 {
-                    komis_dostawcze.Sortuj_Cena_Malejaco();
+                    komis_dostawcze.Sortuj_Moc_Malejaco();
                 }
                 if (rb_filtruj_przebieg.Checked)
                 {
@@ -144,46 +144,46 @@ namespace Komis_Samochodowy_App
         {
             cb_sprzedaj_klient.DataSource = komis.klienci.ToList();
             cb_sprzedaj_klient.SelectedItem = null;
-            cb_sprzedaj_klient.SelectedText = "Klient";
+            cb_sprzedaj_klient.Text = "Klient";
 
             cb_rodzaj_paliwa.DataSource = Enum.GetValues(typeof(Rodzaj_paliwa));
             cb_rodzaj_paliwa.SelectedItem = null;
-            cb_rodzaj_paliwa.SelectedText = "Rodzaj paliwa";
+            cb_rodzaj_paliwa.Text = "Rodzaj paliwa";
             cb_rodzaj_zabudowy.DataSource = Enum.GetValues(typeof(Rodzaj_zabudowy));
             cb_rodzaj_zabudowy.SelectedItem = null;
-            cb_rodzaj_zabudowy.SelectedText = "Rodzaj zabudowy";
+            cb_rodzaj_zabudowy.Text = "Rodzaj zabudowy";
             cb_rodzaj_napedu.DataSource = Enum.GetValues(typeof(Rodzaj_napedu));
             cb_rodzaj_napedu.SelectedItem = null;
-            cb_rodzaj_napedu.SelectedText = "Rodzaj napedu";
+            cb_rodzaj_napedu.Text = "Rodzaj napedu";
             cb_skrzynia_biegow.DataSource = Enum.GetValues(typeof(Skrzynia_biegow));
             cb_skrzynia_biegow.SelectedItem = null;
-            cb_skrzynia_biegow.SelectedText = "Skrzynia biegow";
+            cb_skrzynia_biegow.Text = "Skrzynia biegow";
             cb_kraj_pochodzenia.DataSource = Enum.GetValues(typeof(Kraj_pochodzenia));
             cb_kraj_pochodzenia.SelectedItem = null;
-            cb_kraj_pochodzenia.SelectedText = "Kraj pochodzenia";
+            cb_kraj_pochodzenia.Text = "Kraj pochodzenia";
 
             cb_filtruj_rodzaj_paliwa.DataSource = Enum.GetValues(typeof(Rodzaj_paliwa));
             cb_filtruj_rodzaj_paliwa.SelectedItem = null;
-            cb_filtruj_rodzaj_paliwa.SelectedText = "Rodzaj paliwa";
+            cb_filtruj_rodzaj_paliwa.Text = "Rodzaj paliwa";
             cb_filtruj_rodzaj_zabudowy.DataSource = Enum.GetValues(typeof(Rodzaj_zabudowy));
             cb_filtruj_rodzaj_zabudowy.SelectedItem = null;
-            cb_filtruj_rodzaj_zabudowy.SelectedText = "Rodzaj zabudowy";
+            cb_filtruj_rodzaj_zabudowy.Text = "Rodzaj zabudowy";
             cb_filtruj_rodzaj_napedu.DataSource = Enum.GetValues(typeof(Rodzaj_napedu));
             cb_filtruj_rodzaj_napedu.SelectedItem = null;
-            cb_filtruj_rodzaj_napedu.SelectedText = "Rodzaj napedu";
+            cb_filtruj_rodzaj_napedu.Text = "Rodzaj napedu";
             cb_filtruj_skrzynia_biegow.DataSource = Enum.GetValues(typeof(Skrzynia_biegow));
             cb_filtruj_skrzynia_biegow.SelectedItem = null;
-            cb_filtruj_skrzynia_biegow.SelectedText = "Skrzynia biegow";
+            cb_filtruj_skrzynia_biegow.Text = "Skrzynia biegow";
             cb_filtruj_kraj_pochodzenia.DataSource = Enum.GetValues(typeof(Kraj_pochodzenia));
             cb_filtruj_kraj_pochodzenia.SelectedItem = null;
-            cb_filtruj_kraj_pochodzenia.SelectedText = "Kraj pochodzenia";
+            cb_filtruj_kraj_pochodzenia.Text = "Kraj pochodzenia";
             cb_filtruj_wlasciciel.DataSource = komis.klienci.ToList();
             cb_filtruj_wlasciciel.SelectedItem = null;
-            cb_filtruj_wlasciciel.SelectedText = "Wlasciciel";
+            cb_filtruj_wlasciciel.Text = "Wlasciciel";
             cb_filtruj_sprzedany.Items.Add("Tak");
             cb_filtruj_sprzedany.Items.Add("Nie");
             cb_filtruj_sprzedany.SelectedItem = null;
-            cb_filtruj_sprzedany.SelectedText = "Sprzedany";
+            cb_filtruj_sprzedany.Text = "Sprzedany";
 
             btn_wyswietl_liste_Click(sender, e);
 
@@ -280,19 +280,19 @@ namespace Komis_Samochodowy_App
                 tb_przebieg.Clear();
                 tb_vin.Clear();
                 cb_rodzaj_paliwa.SelectedItem = null;
-                cb_rodzaj_paliwa.SelectedText = "Rodzaj paliwa";
+                cb_rodzaj_paliwa.Text = "Rodzaj paliwa";
                 cb_uszkodzony.Checked = false;
                 tb_pojemnosc_silnika.Clear();
                 tb_moc.Clear();
                 tb_kolor.Clear();
                 cb_skrzynia_biegow.SelectedItem = null;
-                cb_skrzynia_biegow.SelectedText = "Skrzynia biegow";
+                cb_skrzynia_biegow.Text = "Skrzynia biegow";
                 cb_kraj_pochodzenia.SelectedItem = null;
-                cb_kraj_pochodzenia.SelectedText = "Kraj pochodzenia";
+                cb_kraj_pochodzenia.Text = "Kraj pochodzenia";
                 cb_rodzaj_napedu.SelectedItem = null;
-                cb_rodzaj_napedu.SelectedText = "Rodzaj napedu";
+                cb_rodzaj_napedu.Text = "Rodzaj napedu";
                 cb_filtruj_rodzaj_zabudowy.SelectedItem = null;
-                cb_filtruj_rodzaj_zabudowy.SelectedText = "Rodzaj zabudowy";
+                cb_filtruj_rodzaj_zabudowy.Text = "Rodzaj zabudowy";
                 tb_liczba_drzwi_bocznych.Clear();
                 tb_ladownosc.Clear();
                 btn_filtruj_resetuj_Click(sender, e);
@@ -316,19 +316,19 @@ namespace Komis_Samochodowy_App
             cb_filtruj_sprzedany.Text = null;
 
             cb_filtruj_rodzaj_paliwa.SelectedItem = null;
-            cb_filtruj_rodzaj_paliwa.SelectedText = "Rodzaj paliwa";
+            cb_filtruj_rodzaj_paliwa.Text = "Rodzaj paliwa";
             cb_filtruj_rodzaj_zabudowy.SelectedItem = null;
-            cb_filtruj_rodzaj_zabudowy.SelectedText = "Rodzaj zabudowy";
+            cb_filtruj_rodzaj_zabudowy.Text = "Rodzaj zabudowy";
             cb_filtruj_rodzaj_napedu.SelectedItem = null;
-            cb_filtruj_rodzaj_napedu.SelectedText = "Rodzaj napedu";
+            cb_filtruj_rodzaj_napedu.Text = "Rodzaj napedu";
             cb_filtruj_skrzynia_biegow.SelectedItem = null;
-            cb_filtruj_skrzynia_biegow.SelectedText = "Skrzynia biegow";
+            cb_filtruj_skrzynia_biegow.Text = "Skrzynia biegow";
             cb_filtruj_kraj_pochodzenia.SelectedItem = null;
-            cb_filtruj_kraj_pochodzenia.SelectedText = "Kraj pochodzenia";
+            cb_filtruj_kraj_pochodzenia.Text = "Kraj pochodzenia";
             cb_filtruj_wlasciciel.SelectedItem = null;
-            cb_filtruj_wlasciciel.SelectedText = "Wlasciciel";
+            cb_filtruj_wlasciciel.Text = "Wlasciciel";
             cb_filtruj_sprzedany.SelectedItem = null;
-            cb_filtruj_sprzedany.SelectedText = "Sprzedany";
+            cb_filtruj_sprzedany.Text = "Sprzedany";
             tb_filtruj_marka.Clear();
             tb_filtruj_model.Clear();
             tb_filtruj_vin.Clear();
