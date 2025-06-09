@@ -164,7 +164,7 @@ namespace Komis_Samochodowy_App
             {
                 k.Klient_Newsletter += klient =>
                 {
-                    MessageBox.Show($"Klient: {klient.Imie} {klient.Nazwisko} zmienił status swojego newslettera na: {(klient.Newsletter == true ? "Zasubskrybowany" : "Niezasubskrybowany")}", "Zmiana statusu newslettera");
+                    MessageBox.Show($"Status newslettera klienta: {klient.Imie} {klient.Nazwisko} został zmieniony na: {(klient.Newsletter == true ? "Zasubskrybowany" : "Niezasubskrybowany")}", "Zmiana statusu newslettera");
                 };
 
                 k.Dodano_Osobe += klient =>
